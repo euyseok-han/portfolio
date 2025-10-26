@@ -1,0 +1,287 @@
+/* =============== GLOBAL =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* =============== HEADER =============== */
+.header {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  color: white;
+  padding: 0rem 0;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.header-contents {
+  font-size: 1rem;
+  color: black;
+  line-height: 1.6;
+}
+
+.header-item a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+/* =============== PROFILE SECTION =============== */
+.profile-section {
+  margin-top: 3rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-align: center;
+}
+
+.profile-banner {
+  background: linear-gradient(135deg, #0b066b, #740000);
+  height: 40px;
+}
+
+.profile-content {
+  padding: 2rem;
+  position: relative;
+  margin-top: -60px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* margin-top: 1rem; */
+  margin-bottom: 1.5rem;
+}
+
+.profile-bio {
+  color: #4b5563;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  max-width: 730px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold; /
+}
+
+/* =============== SOCIAL LINKS =============== */
+.school-logo {
+  width: 85px;       
+  height: 28px;
+  margin-left: 8px;  /* space between text and image */
+  vertical-align: middle; /* aligns with text */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0 rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.social-icon {
+  width:50px;
+  height: 50px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.youtube-icon {
+  margin-left: 5px;
+  width:20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.youtube-icon:hover {
+  transform: scale(1.1);
+}
+
+.link-icon {
+  margin-left: 5px;
+  width:20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.link-icon:hover {
+  transform: scale(1.1);
+}
+
+.btn-github {
+  background-color: #24292e;
+  color: white;
+}
+
+.btn-linkedin {
+  background-color: #ffffff;
+  color: white;
+}
+
+.btn-email {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* =============== PROJECTS SECTION =============== */
+.projects-section {
+  margin-top: 4rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.project-card {
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image-container {
+  flex: 1 1 45%;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px; /* optional: slightly rounded corners */
+}
+
+.project-details {
+  flex: 1 1 55%;
+  padding: 2rem;
+}
+
+.project-number {
+  font-weight: 600;
+  color: #6366f1;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+}
+
+.project-description {
+  color: #4b5563;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* =============== TECHNOLOGIES =============== */
+.technologies-section {
+  margin-top: 1rem;
+}
+
+.technologies-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.technologies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* =============== PROJECT LINKS =========*/
+
+.project-links {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;
+  gap: 0.5rem;               /* space between multiple links if added later */
+  margin-top: 1rem;
+}
