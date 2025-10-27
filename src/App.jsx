@@ -6,6 +6,7 @@ import miniCar from './assets/arduino_car.png';
 import patsol from './assets/patsol.png';
 import link from './assets/link.png';
 import drone from './assets/drone.jpg';
+import waldo from './assets/waldo.gif';
 import React from 'react';
 import './App.css';
 
@@ -32,8 +33,8 @@ export default function App() {
     },
     {
       id: 2,
-      title: "Waldo",
-      image: "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1",
+      title: "Waldo!",
+      image: waldo,
       description: "A Waldo is an input device that tracks motion and maps it to a corresponding output, often mirroring the input’s structure. For this project, I designed and built a Waldo using potentiometers and servo motors, programmed with C on an microcontroller(ATmega32U) using register-level programming, and fabricated components via SolidWorks modeling and laser cutting.",
       technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping"],
       github: "",

@@ -185,7 +185,7 @@ a {
 
 /* =============== PROJECTS SECTION =============== */
 .projects-section {
-  margin-top: 4rem;
+  margin-top: 4rem; 
 }
 
 .section-title {
@@ -209,6 +209,7 @@ a {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.3s ease;
+  max-height: 500px;       /* Limit height */
 }
 
 .project-card:hover {
