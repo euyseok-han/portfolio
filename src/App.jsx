@@ -5,6 +5,7 @@ import youtubeLogo from './assets/youtube_icon.png';
 import miniCar from './assets/arduino_car.png';
 import patsol from './assets/patsol.png';
 import link from './assets/link.png';
+import drone from './assets/drone.jpg';
 import React from 'react';
 import './App.css';
 
@@ -22,7 +23,7 @@ export default function App() {
     {
       id: 1,
       title: "Tiny Drone Research with Prof. Mark G. Allen",
-      image: "https://via.placeholder.com/500x280?text=Micro+Drone", // replace with your project image
+      image: drone,
       description: "Designing and optimizing a tiny drone (~50 g) to achieve a 30-minute flight time through aerodynamic analysis (theoretical calculations), Python simulations for motor and battery specifications, and frame design. Built and prototyped components using SolidWorks and 3D printing for lightweight and efficient performance, conducting this research as a research assistant.",
       technologies: ["Python", "Aerodynamics Analysis", "SolidWorks", "3D Printing",],
       github: "",
