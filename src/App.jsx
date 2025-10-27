@@ -79,6 +79,8 @@ export default function App() {
                 className="school-logo"
               />
             </p>
+            <br></br>
+            <h3>Note: This portfolio website is optimized for desktop browsing</h3>
           </div>
         </div>
       </header>

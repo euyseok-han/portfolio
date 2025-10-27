@@ -47,6 +47,12 @@ a {
   line-height: 1.6;
 }
 
+.header-contents h3 {
+  background-color: #dddddd;
+  padding: 0rem 0rem;
+  border-radius: 0.5rem;
+}
+
 .header-item a {
   color: #93c5fd;
   text-decoration: none;
