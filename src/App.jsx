@@ -5,7 +5,7 @@ import youtubeLogo from './assets/youtube_icon.png';
 import miniCar from './assets/arduino_car.png';
 import patsol from './assets/patsol.png';
 import link from './assets/link.png';
-import drone from './assets/drone.jpg';
+import drone from './assets/drone.JPG';
 import React from 'react';
 import './App.css';
 
