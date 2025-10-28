@@ -267,8 +267,15 @@ a {
   margin: 0.5rem 0 1rem;
 }
 
+.project-period {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #8a8c99;
+  margin-bottom: 1rem;
+}
+
 .project-description {
-  color: #4b5563;
+  color: #1b1f24;
   font-size: 1rem;
   margin-bottom: 1rem;
 }

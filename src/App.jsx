@@ -10,6 +10,9 @@ import drone from './assets/drone.jpg';
 import waldo from './assets/waldo.gif';
 import mega from './assets/mega.png';
 import mil from './assets/mil.JPG';
+import garage from './assets/garage.jpg';
+
+
 import React from 'react';
 import './App.css';
 
@@ -70,6 +73,7 @@ export default function App() {
     {
       id: 1,
       title: "UPenn Mechanical Engineering Graduate Association (MEGA) Vice President",
+      period: "September 2025 - Present",
       image: mega,
       description: "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
       description2: "",
@@ -77,11 +81,21 @@ export default function App() {
     },
     {
       id: 2,
+      title: "Garage Lab Staff Member",
+      period: "October 2025 - Present",
+      image: garage,
+      description: "As a staff member in a lab equipped with machining tools such as a miller, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
+      description2: "",
+    },
+    {
+      id: 3,
       title: "The Korean Air Force Operations Officer, Captain",
+      period: "March 2019 - May 2022",
       image: mil,
       description: "As an Operations Officer in the Korean Air Force, led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
       description2: "(The picture was taken with my commander on the day I was discharged)",
-    }
+    },
+    
 
   ];
 
@@ -236,7 +250,7 @@ export default function App() {
                   </span>
                   
                   <h4 className="project-title">{project.title}</h4>
-                  
+                  <p className='project-period'>{project.period}</p>
                   <p className="project-description">{project.description}</p>
                   {project.description2 && <div><br></br> <p className="project-description">{project.description2}</p></div>}
                   
