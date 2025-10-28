@@ -1,4 +1,5 @@
 import linkedinLogo from './assets/LinkedIn_icon.png';
+import githubLogo from './assets/github.png';
 import mailLogo from './assets/mail_icon.png';
 import upennLogo from './assets/upenn.png';
 import youtubeLogo from './assets/youtube_icon.png';
@@ -68,7 +69,8 @@ export default function App() {
       {/* Header */}
       <header className="header">
         <div className="container">
-          <h1 className="header-title">Louis's Portfolio</h1>
+          <h3 className ="header-subtitle">Mechanical Engineer | Software Developer</h3>
+          <h1 className="header-title">Louis Han</h1>
           <div className="header-contents">
             <p className="header-item">📍 Philadelphia, PA, USA</p>
             <p className="header-item">📧 <a href="mailto:louishan@seas.upenn.edu">louishan@seas.upenn.edu</a></p>
@@ -107,6 +109,9 @@ export default function App() {
                 </a> */}
                 <a href="https://www.linkedin.com/in/uiseok-han-79a546229/" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
                   <img src={linkedinLogo} alt="LinkedIn" className="social-icon"></img>
+                </a>
+                <a href="https://github.com/euyseok-han/" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
+                  <img src={githubLogo} alt="Github" className="social-icon"></img>
                 </a>
                 <a href="mailto:louishan@seas.upenn.edu" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
                   <img src={mailLogo} alt="Email" className="social-icon"></img>
