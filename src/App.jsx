@@ -8,6 +8,8 @@ import patsol from './assets/patsol.png';
 import link from './assets/link.png';
 import drone from './assets/drone.jpg';
 import waldo from './assets/waldo.gif';
+import mega from './assets/mega.png';
+import mil from './assets/mil.JPG';
 import React from 'react';
 import './App.css';
 
@@ -64,12 +66,33 @@ export default function App() {
     }
   ];
 
+  const leaderships = [
+    {
+      id: 1,
+      title: "UPenn Mechanical Engineering Graduate Association (MEGA) Vice President",
+      image: mega,
+      description: "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
+      description2: "",
+      link: "",
+    },
+    {
+      id: 2,
+      title: "The Korean Air Force Operations Officer, Captain",
+      image: mil,
+      description: "As an Operations Officer in the Korean Air Force, led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
+      description2: "(The picture was taken with my commander on the day I was discharged)",
+    }
+
+  ];
+
   return (
     <div className="app">
       {/* Header */}
       <header className="header">
         <div className="container">
-          <h3 className ="header-subtitle">Mechanical Engineer | Software Developer</h3>
+          <div className="header-contents">
+            <p className="header-item-bigger">Mechanical Engineer | Software Developer</p>
+          </div>
           <h1 className="header-title">Louis Han</h1>
           <div className="header-contents">
             <p className="header-item">📍 Philadelphia, PA, USA</p>
@@ -104,9 +127,7 @@ export default function App() {
               
               {/* Social Links */}
               <div className="social-links">
-                {/* <a href="https://github.com/yourusername" className="btn btn-github" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a> */}
+                
                 <a href="https://www.linkedin.com/in/uiseok-han-79a546229/" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
                   <img src={linkedinLogo} alt="LinkedIn" className="social-icon"></img>
                 </a>
@@ -190,6 +211,45 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/*Leadership Experience Section*/}
+      <section className="projects-section">
+        <div className="container">
+          <h3 className="section-title">Leadership Experiences</h3>
+          
+          <div className="projects-list">
+            {leaderships.map((project, index) => (
+              <div key={project.id} className="project-card">
+                {/* Project Image - Left Side */}
+                <div className="project-image-container">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="project-image"
+                  />
+                </div>
+                
+                {/* Project Details - Right Side */}
+                <div className="project-details">
+                  <span className="project-number">
+                    Leadership Experience {String(index + 1).padStart(2, '0')}
+                  </span>
+                  
+                  <h4 className="project-title">{project.title}</h4>
+                  
+                  <p className="project-description">{project.description}</p>
+                  {project.description2 && <div><br></br> <p className="project-description">{project.description2}</p></div>}
+                  
+                  {/* Links */}
+                
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Footer */}
       <footer className="footer">
