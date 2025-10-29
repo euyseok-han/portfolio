@@ -31,7 +31,7 @@ export default function App() {
       id: 1,
       title: "Tiny Drone Research with Prof. Mark G. Allen",
       image: drone,
-      description: "Designing and optimizing a tiny drone (~50 g) to achieve a 30-minute flight time through aerodynamic analysis (theoretical calculations), Python simulations for motor and battery specifications, and frame design. Built and prototyped components using SolidWorks and 3D printing for lightweight and efficient performance, conducting this research as a research assistant.",
+      description: "Designing, testing, and optimizing a lightweight (~50 g) drone to achieve a 30-minute flight time through aerodynamic analysis, Python-based physics simulations, and SolidWorks-driven 3D modeling and prototyping.",
       technologies: ["Python", "Aerodynamics Analysis", "SolidWorks", "3D Printing",],
       github: "",
       demo: "", 
