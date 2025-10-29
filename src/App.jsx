@@ -21,7 +21,7 @@ export default function App() {
   const profile = {
     name: "Louis Han",
     image: "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no", // Replace with your photo URL
-    bio1: "✅ Mechanical Engineer with mechatronics and manufacturing expertise, professional programming experience, and research in micro drone design under Prof. Mark G. Allen",
+    bio1: "✅ Mechanical Engineer with mechatronics and manufacturing expertise, professional programming experience, and research in tiny drone design under Prof. Mark G. Allen",
     bio2: "✅ Leadership and teamwork skills honed as a Korean Air Force officer and VP of the UPenn Mechanical Engineering Graduate Association (MEGA)"
   };
 
@@ -39,7 +39,7 @@ export default function App() {
     },
     {
       id: 2,
-      title: "Waldo!",
+      title: "Waldo",
       image: waldo,
       description: "A Waldo is an input device that tracks motion and maps it to a corresponding output, often mirroring the input’s structure. For this project, I designed and built a Waldo using potentiometers and servo motors, programmed with C on an microcontroller(ATmega32U) using register-level programming, and fabricated components via SolidWorks modeling and laser cutting.",
       technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping"],
@@ -84,7 +84,7 @@ export default function App() {
       title: "Garage Lab Staff Member",
       period: "October 2025 - Present",
       image: garage,
-      description: "As a staff member in a lab equipped with machining tools such as a miller, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
+      description: "As a staff member in a UPenn lab equipped with machining tools such as a mill, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
       description2: "",
     },
     {
@@ -92,8 +92,8 @@ export default function App() {
       title: "The Korean Air Force Operations Officer, Captain",
       period: "March 2019 - May 2022",
       image: mil,
-      description: "As an Operations Officer in the Korean Air Force, led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
-      description2: "(The picture was taken with my commander on the day I was discharged)",
+      description: "As an Operations Officer in the Korean Air Force, I led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
+      description2: "(The photo was taken with my commander (a colonel) on the day I was discharged)",
     },
     
 
