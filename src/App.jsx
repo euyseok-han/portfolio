@@ -62,7 +62,7 @@ export default function App() {
       title: "Patsol",
       image: patsol,
       description: "As the software engineer of a startup, developed Patsol, an AI-powered patent search engine using FastAPI, React, and NLP to streamline prior art discovery and assist inventors in obtaining patents, achieving a 64% search hit rate—twice the performance of existing Korean services",
-      technologies: ["React", "FastAPI", "NLP", "AWS", "Git", "Test-Driven Development(TDD)"],
+      technologies: ["React", "FastAPI", "NLP", "AWS", "Git", "Github Workflows(CI/CD)", "Test-Driven Development(TDD)"],
       github: "",
       demo: "",
       link: "https://patsol.kr/"
