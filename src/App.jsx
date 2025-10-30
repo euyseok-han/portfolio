@@ -62,7 +62,7 @@ export default function App() {
       title: "Patsol",
       image: patsol,
       description: "As the software engineer of a startup, developed Patsol, an AI-powered patent search engine using FastAPI, React, and NLP to streamline prior art discovery and assist inventors in obtaining patents, achieving a 64% search hit rate—twice the performance of existing Korean services",
-      technologies: ["React", "FastAPI", "NLP", "AWS", "Git"],
+      technologies: ["React", "FastAPI", "NLP", "AWS", "Git", "Test-Driven Development(TDD)"],
       github: "",
       demo: "",
       link: "https://patsol.kr/"
@@ -269,7 +269,7 @@ export default function App() {
       <footer className="footer">
         <div className="container">
           <p className="footer-text">© 2025 {profile.name}. All rights reserved.</p>
-          <p className="footer-subtext">Built with React & Vite</p>
+          <p className="footer-subtext">Built from scartch by Louis using React and AWS</p>
         </div>
       </footer>
     </div>
