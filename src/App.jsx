@@ -35,7 +35,8 @@ export default function App() {
       technologies: ["Python", "Aerodynamics Analysis", "SolidWorks", "3D Printing",],
       github: "",
       demo: "", 
-      link: ""
+      link: "",
+      github_link: "https://github.com/euyseok-han/AAB_Drone"
     },
     {
       id: 2,
@@ -45,7 +46,8 @@ export default function App() {
       technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping", "servo motors"],
       github: "",
       demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
-      link: ""
+      link: "",
+      github_link: ""
     },
     {
       id: 3,
@@ -55,7 +57,8 @@ export default function App() {
       technologies: ["Arduino", "Solidworks", "ultrasonic sensor",],
       github: "",
       demo: "",
-      link: ""
+      link: "",
+      github_link: "",
     },
     {
       id: 4,
@@ -65,7 +68,8 @@ export default function App() {
       technologies: ["React", "FastAPI", "NLP", "AWS", "Git", "Github Workflows(CI/CD)", "Test-Driven Development(TDD)"],
       github: "",
       demo: "",
-      link: "https://patsol.kr/"
+      link: "https://patsol.kr/",
+      github_link: "",
     }
   ];
 
@@ -215,6 +219,14 @@ export default function App() {
                       rel="noopener noreferrer">
                         Link
                         <img src={link} alt="Link Icon" className="link-icon"></img>
+                    </a>}
+                    {project.github_link && <a
+                      href={project.github_link}
+                      className="btn btn-link"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                        Github Code
+                        <img src={githubLogo} alt="Github Icon" className="link-icon"></img>
                     </a>}
                     
                   </div>
