@@ -42,7 +42,7 @@ export default function App() {
       title: "Waldo",
       image: waldo,
       description: "A Waldo is an input device that tracks motion and maps it to a corresponding output, often mirroring the input’s structure. For this project, I designed and built a Waldo using potentiometers and servo motors, programmed with C on an microcontroller(ATmega32U) using register-level programming, and fabricated components via SolidWorks modeling and laser cutting.",
-      technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping"],
+      technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping", "servo motors"],
       github: "",
       demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
       link: ""
@@ -52,7 +52,7 @@ export default function App() {
       title: "Autonomous Driving Mini Car",
       image: miniCar,
       description: "Won first place among over 100 students at Seoul National University in an Autonomous Driving Competition by designing and building a small self-driving Arduino car and programming navigation logic for fast and accurate route completion.",
-      technologies: ["Arduino", "Solidworks", "ultrasonic sensor", "servo motors"],
+      technologies: ["Arduino", "Solidworks", "ultrasonic sensor",],
       github: "",
       demo: "",
       link: ""
