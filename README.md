@@ -1,18 +1,35 @@
-# React + Vite
+# 🌐 Louis's Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for my **personal portfolio website**, built to showcase my projects, experiences, and skills.  
+The website is built with **React (Vite)**, hosted on **AWS EC2**, and includes an **automated deployment system** that updates the live site whenever code changes are pushed.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- ⚛️ **Built with React + Vite** for fast development and optimized build performance  
+- ☁️ **Hosted on AWS EC2** for full control over server configuration  
+- 🔄 **Automated CI/CD** pipeline that deploys new builds automatically on every code update  
+- 📱 **Responsive design** optimized for desktop browsing  
+- 🎨 **Modern UI** with clean, minimal styling
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🏗️ Tech Stack
 
-## Expanding the ESLint configuration
+| Category | Technologies Used |
+|-----------|-------------------|
+| Frontend | React, Vite, JavaScript, HTML, CSS |
+| Hosting | AWS EC2 (Ubuntu) |
+| CI/CD | GitHub Actions (automated deployment) |
+| Web Server | Nginx |
+| Domain | Route 53 + Custom Domain(GoDaddy) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Deployment Workflow
+
+1. **Local Development**
+   ```bash
+   npm install
+   npm run dev
