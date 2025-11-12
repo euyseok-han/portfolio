@@ -41,20 +41,21 @@ export default function App() {
     },
   {
     id: 2,
-    title: "RC Car with Web Controller",
-    image: rcCar,
-    description:
-      "Designed and built a Wi-Fi controlled RC car using an ESP32-C, enabling forward/reverse motion and steering through a custom web interface. Modeled the chassis in SolidWorks and fabricated it using laser cutting, integrating DC motors, motor driver, and on-board electronics for responsive remote control.",
-    technologies: [
-      "ESP32-C",
-      "Wi-Fi Communication",
-      "SolidWorks",
-      "Laser Cutting",  
-      "Milling",
-      "DC Motors",
-      "C++ Programming (Arduino)",
-      "Web Interface (HTML/CSS/JavaScript)"
-    ],
+    title: "Dual Motor RC Car with Web Dashboard",
+  image: rcCar,
+  description:
+    "Built a Wi-Fi controlled differential-drive RC car using an ESP32-C3, with a browser-based dashboard for speed, steering, and live telemetry. Implemented dual DC motor control with quadrature encoders and PID speed regulation, exposing REST-style endpoints to update targets, tune PID gains, and visualize real-time wheel RPM and control performance. The chassis and mounts were modeled in SolidWorks and fabricated via laser cutting and milling.",
+  technologies: [
+    "ESP32-C3",
+    "Wi-Fi Communication",
+    "C / Arduino Framework",
+    "Quadrature Encoders",
+    "PID Control",
+    "SolidWorks",
+    "Laser Cutting",
+    "DC Motors",
+    "HTML/CSS/JavaScript (Web UI)"
+  ],
     github_link: "https://github.com/euyseok-han/MEAM5100",
     demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
     link: "",
