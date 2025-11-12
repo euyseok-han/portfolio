@@ -44,16 +44,15 @@ export default function App() {
     title: "Dual Motor RC Car with Web Dashboard",
   image: rcCar,
   description:
-    "Built a Wi-Fi controlled differential-drive RC car using an ESP32-C3, with a browser-based dashboard for speed, steering, and live telemetry. Implemented dual DC motor control with quadrature encoders and PID speed regulation, exposing REST-style endpoints to update targets, tune PID gains, and visualize real-time wheel RPM and control performance. The chassis and mounts were modeled in SolidWorks and fabricated via laser cutting and milling.",
+    "Built a Wi-Fi controlled RC car with an ESP32-C3 and browser dashboard, using dual DC motors with encoders, PID speed control, and a SolidWorks-designed chassis fabricated via laser cutting and milling.",
   technologies: [
     "ESP32-C3",
     "Wi-Fi Communication",
-    "C / Arduino Framework",
+    "C++ / Arduino Framework",
     "Quadrature Encoders",
     "PID Control",
     "SolidWorks",
     "Laser Cutting",
-    "DC Motors",
     "HTML/CSS/JavaScript (Web UI)"
   ],
     github_link: "https://github.com/euyseok-han/MEAM5100",
