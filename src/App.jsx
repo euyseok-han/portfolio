@@ -11,6 +11,7 @@ import waldo from './assets/waldo.gif';
 import mega from './assets/mega.png';
 import mil from './assets/mil.JPG';
 import garage from './assets/garage.jpg';
+import rcCar from './assets/rc_car.GIF';
 
 
 import React from 'react';
@@ -38,17 +39,27 @@ export default function App() {
       link: "",
       github_link: "https://github.com/euyseok-han/AAB_Drone"
     },
-    {
-      id: 2,
-      title: "Waldo",
-      image: waldo,
-      description: "A Waldo is an input device that tracks motion and maps it to a corresponding output, often mirroring the input’s structure. For this project, I designed and built a Waldo using potentiometers and servo motors, programmed with C on an microcontroller(ATmega32U) using register-level programming, and fabricated components via SolidWorks modeling and laser cutting.",
-      technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping", "servo motors"],
-      github: "",
-      demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
-      link: "",
-      github_link: ""
-    },
+  {
+    id: 2,
+    title: "RC Car with Web Controller",
+    image: rcCar,
+    description:
+      "Designed and built a Wi-Fi controlled RC car using an ESP32-C, enabling forward/reverse motion and steering through a custom web interface. Modeled the chassis in SolidWorks and fabricated it using laser cutting, integrating DC motors, motor driver, and on-board electronics for responsive remote control.",
+    technologies: [
+      "ESP32-C",
+      "Wi-Fi Communication",
+      "SolidWorks",
+      "Laser Cutting",  
+      "Milling",
+      "DC Motors",
+      "C++ Programming (Arduino)",
+      "Web Interface (HTML/CSS/JavaScript)"
+    ],
+    github_link: "https://github.com/euyseok-han/MEAM5100",
+    demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
+    link: "",
+    github_link: ""
+  },
     {
       id: 3,
       title: "Autonomous Driving Mini Car",
