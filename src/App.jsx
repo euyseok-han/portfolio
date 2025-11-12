@@ -58,7 +58,6 @@ export default function App() {
     github_link: "https://github.com/euyseok-han/MEAM5100",
     demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
     link: "",
-    github_link: ""
   },
     {
       id: 3,
