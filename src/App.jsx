@@ -27,102 +27,85 @@ export default function App() {
   };
 
   // Your projects data
-  const projects = [
-    {
-      id: 1,
-      title: "Tiny Drone Research with Prof. Mark G. Allen",
-      image: drone,
-      description: "Designing, testing, and optimizing a lightweight (~50 g) drone to achieve a 30-minute flight time through aerodynamic analysis, Python-based physics simulations, and SolidWorks-driven 3D modeling and prototyping.",
-      technologies: ["Python", "Aerodynamics Analysis", "SolidWorks", "3D Printing",],
-      github: "",
-      demo: "", 
-      link: "",
-      github_link: "https://github.com/euyseok-han/AAB_Drone"
-    },
+const projects = [
+  {
+    id: 1,
+    title: "Tiny Drone Research with Prof. Mark G. Allen",
+    image: drone,
+    description:
+      "Designing and optimizing a ~25 g micro-drone in Penn’s Micro Sensors and Micro Actuators Group to target a 30-minute hover time using Python-based mass/power modeling and a SolidWorks chassis fabricated via 3D printing and laser cutting.",
+    technologies: [
+      "Python",
+      "Aerodynamics",
+      "SolidWorks",
+      "3D Printing",
+      "Laser Cutting"
+    ],
+    github: "",
+    demo: "",
+    link: "",
+    github_link: "https://github.com/euyseok-han/AAB_Drone"
+  },
   {
     id: 2,
     title: "Dual Motor RC Car with Web Dashboard",
-  image: rcCar,
-  description:
-    "Built a Wi-Fi controlled RC car with an ESP32-C3 and browser dashboard, using dual DC motors with encoders, PID speed control, and a SolidWorks-designed chassis fabricated via laser cutting and milling.",
-  technologies: [
-    "ESP32-C3",
-    "Wi-Fi Communication",
-    "C++ / Arduino Framework",
-    "Quadrature Encoders",
-    "PID Control",
-    "SolidWorks",
-    "Laser Cutting",
-    "HTML/CSS/JavaScript (Web UI)"
-  ],
+    image: rcCar,
+    description:
+      "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
+    technologies: [
+      "ESP32-C3",
+      "Wi-Fi Communication",
+      "C++ / Arduino Framework",
+      "Quadrature Encoders",
+      "PID Control",
+      "SolidWorks",
+      "Laser Cutting",
+      "HTML/CSS/JavaScript"
+    ],
     github_link: "https://github.com/euyseok-han/MEAM5100",
     demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
-    link: "",
+    link: ""
   },
-      {
-      id: 3,
-      title: "Waldo",
-      image: waldo,
-      description: "A Waldo is an input device that tracks motion and maps it to a corresponding output, often mirroring the input’s structure. For this project, I designed and built a Waldo using potentiometers and servo motors, programmed with C on an microcontroller(ATmega32U) using register-level programming, and fabricated components via SolidWorks modeling and laser cutting.",
-      technologies: ["microcontroller (ATmega32U)", "C (Programming Language)", "SolidWorks", "Rapid Prototyping", "servo motors"],
-      github: "",
-      demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
-      link: "",
-      github_link: ""
-    },
-    // {
-    //   id: 4,
-    //   title: "Autonomous Driving Mini Car",
-    //   image: miniCar,
-    //   description: "Won first place among over 100 students at Seoul National University in an Autonomous Driving Competition by designing and building a small self-driving Arduino car and programming navigation logic for fast and accurate route completion.",
-    //   technologies: ["Arduino", "Solidworks", "ultrasonic sensor",],
-    //   github: "",
-    //   demo: "",
-    //   link: "",
-    //   github_link: "",
-    // },
-    {
-      id: 4,
-      title: "Patsol",
-      image: patsol,
-      description: "As the software engineer of a startup, developed Patsol, an AI-powered patent search engine using FastAPI, React, and NLP to streamline prior art discovery and assist inventors in obtaining patents, achieving a 64% search hit rate—twice the performance of existing Korean services",
-      technologies: ["React", "FastAPI", "NLP", "AWS", "Git", "Github Workflows(CI/CD)", "Test-Driven Development(TDD)"],
-      github: "",
-      demo: "",
-      link: "https://patsol.kr/",
-      github_link: "",
-    }
-  ];
+  {
+    id: 3,
+    title: "Waldo",
+    image: waldo,
+    description:
+      "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
+    technologies: [
+      "ATmega32U",
+      "C (Register-Level Programming)",
+      "Servo Motors",
+      "SolidWorks",
+      "Rapid Prototyping"
+    ],
+    github: "",
+    demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
+    link: "",
+    github_link: ""
+  },
+  {
+    id: 4,
+    title: "Patsol – AI Patent Search Engine",
+    image: patsol,
+    description:
+      "Built Patsol, an AI-powered patent search engine with a RAG pipeline (FastAPI, React, Elasticsearch, transformer embeddings) that lets inventors query in natural language, achieving roughly 2× higher hit rate than existing Korean services and securing ~$71K in funding after pitching to investors.",
+    technologies: [
+      "React",
+      "FastAPI",
+      "Elasticsearch",
+      "RAG (Retrieval-Augmented Generation)",
+      "AWS",
+      "Git",
+      "Test-Driven Development (TDD)"
+    ],
+    github: "",
+    demo: "",
+    link: "https://patsol.kr/",
+    github_link: ""
+  }
+];
 
-  const leaderships = [
-    {
-      id: 1,
-      title: "UPenn Mechanical Engineering Graduate Association (MEGA) Vice President",
-      period: "September 2025 - Present",
-      image: mega,
-      description: "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
-      description2: "",
-      link: "",
-    },
-    {
-      id: 2,
-      title: "Garage Lab Staff Member",
-      period: "October 2025 - Present",
-      image: garage,
-      description: "As a staff member in a UPenn lab equipped with machining tools such as a mill, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
-      description2: "",
-    },
-    {
-      id: 3,
-      title: "The Korean Air Force Operations Officer, Captain",
-      period: "March 2019 - May 2022",
-      image: mil,
-      description: "As an Operations Officer in the Korean Air Force, I led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
-      description2: "(The photo was taken with my commander (a colonel) on the day I was discharged)",
-    },
-    
-
-  ];
 
   return (
     <div className="app">
