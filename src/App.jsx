@@ -33,7 +33,7 @@ const projects = [
     title: "Tiny Drone Research with Prof. Mark G. Allen",
     image: drone,
     description:
-      "Designing and optimizing a ~25 g micro-drone in Penn’s Micro Sensors and Micro Actuators Group to target a 30-minute hover time using Python-based mass/power modeling and a SolidWorks chassis fabricated via 3D printing and laser cutting.",
+      "Perform Python-based mass/power modeling, motor–propeller optimization, and SolidWorks chassis design with 3D-printed fabrication for developing compact, high-efficiency surveillance drones",
     technologies: [
       "Python",
       "Aerodynamics",
