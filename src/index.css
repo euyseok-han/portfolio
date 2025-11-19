@@ -229,7 +229,7 @@ a {
   transition: transform 0.3s ease;
   max-height: 500px;       /* Limit height */
   overflow-y: auto; 
-  width: 110%;
+  width: 128%;
   
 }
 

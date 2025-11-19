@@ -109,7 +109,7 @@ const projects = [
 const leaderships = [
     {
       id: 1,
-      title: "UPenn Mechanical Engineering Graduate Association (MEGA) Vice President",
+      title: "Vice President @ UPenn Mechanical Engineering Graduate Association (MEGA)",
       period: "September 2025 - Present",
       image: mega,
       description: "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
@@ -118,7 +118,7 @@ const leaderships = [
     },
     {
       id: 2,
-      title: "Staff Member of Garage Lab and tool library",
+      title: "Lab Instructor & Tool Library Staff @ UPenn Garage Lab",
       period: "October 2025 - Present",
       image: garage,
       description: "As a staff member in a UPenn lab equipped with machining tools such as a mill, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
@@ -127,7 +127,7 @@ const leaderships = [
     },
     {
       id: 3,
-      title: "The Korean Air Force Operations Officer, Captain",
+      title: "Operations Officer, Captain @ The Korean Air Force ",
       period: "March 2019 - May 2022",
       image: mil,
       description: "As an Operations Officer in the Korean Air Force, I led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
