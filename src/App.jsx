@@ -114,15 +114,16 @@ const leaderships = [
       image: mega,
       description: "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
       description2: "",
-      link: "",
+      link: "https://mega.seas.upenn.edu/mega-board/",
     },
     {
       id: 2,
-      title: "Garage Lab Staff Member",
+      title: "Staff Member of Garage Lab and tool library",
       period: "October 2025 - Present",
       image: garage,
       description: "As a staff member in a UPenn lab equipped with machining tools such as a mill, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
       description2: "",
+      link: "https://meamlabs.seas.upenn.edu/garage-lab-and-tool-library/"
     },
     {
       id: 3,
@@ -131,6 +132,7 @@ const leaderships = [
       image: mil,
       description: "As an Operations Officer in the Korean Air Force, I led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
       description2: "(The photo was taken with my commander (a colonel) on the day I was discharged)",
+      link: ""
     },
     
 
@@ -301,6 +303,26 @@ const leaderships = [
                   {project.description2 && <div><br></br> <p className="project-description">{project.description2}</p></div>}
                   
                   {/* Links */}
+                  <div className="project-links">
+                  
+                    {project.demo && <a 
+                      href={project.demo}
+                      className="btn btn-demo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Demo Shorts  
+                         <img src={youtubeLogo} alt="Youtube Shorts" className="youtube-icon"></img>
+                    </a>}
+                    {project.link && <a
+                      href={project.link}
+                      className="btn btn-link"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                        Link
+                        <img src={link} alt="Link Icon" className="link-icon"></img>
+                    </a>}
+                  </div>
                 
                 </div>
 
