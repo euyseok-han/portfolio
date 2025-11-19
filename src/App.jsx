@@ -89,7 +89,7 @@ const projects = [
     title: "Patsol – AI Patent Search Engine",
     image: patsol,
     description:
-      "Built Patsol, an AI-powered patent search engine with a RAG pipeline (FastAPI, React, Elasticsearch, transformer embeddings) that lets inventors query in natural language, achieving roughly 2× higher hit rate than existing Korean services and securing ~$71K in funding after pitching to investors.",
+      "Architected and implemented end-to-end RAG patent-search pipeline using Python, HuggingFace, Elasticsearch, enabling inventors to query patents via natural language instead of Boolean keyword filters",
     technologies: [
       "React",
       "FastAPI",
