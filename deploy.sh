@@ -4,103 +4,66 @@ set -ex
 ############################################
 # CONFIG
 ############################################
-REPO_URL="https://github.com/euyseok-han/portfolio.git"
 APP_NAME="portfolio"
-DOMAIN="louis-han.info"
-WWW_DOMAIN="www.louis-han.info"
+REPO_DIR="/home/ubuntu/portfolio"
+BUILD_DIR="dist"
+DEPLOY_BASE="/var/www"
+TARGET_DIR=$(ls -td ${DEPLOY_BASE}/portfolio_* 2>/dev/null | head -1)
 
-DEPLOY_DATE=$(date +%Y%m%d%H%M%S)
-TARGET_DIR="/var/www/portfolio_${DEPLOY_DATE}"
+echo "Latest deploy target: $TARGET_DIR"
 
 ############################################
-# SYSTEM SETUP
+# FAIL IF NO EXISTING DEPLOY
 ############################################
-sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt install -y git nginx curl
-
-# Node.js 20 install
-if ! command -v node &> /dev/null; then
-    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-    sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs
+if [ -z "$TARGET_DIR" ]; then
+    echo "❌ No existing deployment found in /var/www"
+    echo "Run initial deploy.sh first"
+    exit 1
 fi
 
 ############################################
-# CLONE / UPDATE
+# UPDATE CODE
 ############################################
-cd /home/ubuntu
+cd $REPO_DIR
 
-if [ -d "$APP_NAME" ]; then
-    echo "Repo exists → pulling latest"
-    cd $APP_NAME
-    git fetch --all
-    git reset --hard origin/main
-else
-    git clone $REPO_URL
-    cd $APP_NAME
-fi
+echo "Pulling latest code..."
+git fetch origin
+git reset --hard origin/main
 
 ############################################
-# BUILD (VITE / REACT)
+# BUILD
 ############################################
+echo "Installing dependencies..."
 npm install
+
+echo "Building project..."
 rm -rf dist
 npm run build
 
 ############################################
-# DEPLOY (ZERO DOWNTIME)
+# UPDATE FILES (ZERO-DOWNTIME STYLE)
 ############################################
-sudo mkdir -p "$TARGET_DIR"
-sudo cp -r dist/* "$TARGET_DIR"
-sudo chown -R www-data:www-data "$TARGET_DIR"
+NEW_DEPLOY_DIR="${DEPLOY_BASE}/portfolio_$(date +%Y%m%d%H%M%S)"
 
-sudo rm -rf /var/www/html
-sudo ln -s "$TARGET_DIR" /var/www/html
+echo "Creating new build folder: $NEW_DEPLOY_DIR"
+sudo mkdir -p "$NEW_DEPLOY_DIR"
 
-############################################
-# NGINX CONFIG (HTTP → HTTPS redirect)
-############################################
-sudo tee /etc/nginx/sites-available/portfolio > /dev/null <<EOF
-server {
-    listen 80;
-    server_name ${DOMAIN} ${WWW_DOMAIN};
+sudo cp -r dist/* "$NEW_DEPLOY_DIR/"
+sudo chown -R www-data:www-data "$NEW_DEPLOY_DIR"
 
-    return 301 https://\$host\$request_uri;
-}
-EOF
+echo "Switching symlink..."
 
-sudo rm -f /etc/nginx/sites-enabled/default || true
-
-sudo ln -sf \
-/etc/nginx/sites-available/portfolio \
-/etc/nginx/sites-enabled/portfolio
+# atomic switch
+sudo ln -sfn "$NEW_DEPLOY_DIR" /var/www/html
 
 ############################################
-# NGINX CHECK (HTTP only first)
+# RELOAD NGINX (no restart needed)
 ############################################
 sudo nginx -t
-sudo systemctl restart nginx
-
-############################################
-# HTTPS (Let's Encrypt SSL)
-############################################
-sudo apt install -y certbot python3-certbot-nginx
-
-sudo certbot --nginx \
-  -d ${DOMAIN} \
-  -d ${WWW_DOMAIN} \
-  --non-interactive \
-  --agree-tos \
-  -m admin@${DOMAIN} \
-  --redirect
-
-############################################
-# FINAL RESTART
-############################################
-sudo nginx -t
-sudo systemctl restart nginx
+sudo systemctl reload nginx
 
 echo "======================================"
-echo "DEPLOY COMPLETE 🚀"
-echo "HTTP → HTTPS enabled"
-echo "Site: https://${DOMAIN}"
+echo "UPDATE DEPLOY COMPLETE 🚀"
+echo "New build deployed at: $NEW_DEPLOY_DIR"
+echo "Site updated successfully (no downtime)"
 echo "======================================"

@@ -12,7 +12,7 @@ import mega from './assets/mega.png';
 import mil from './assets/mil.JPG';
 import garage from './assets/garage.jpg';
 import rcCar from './assets/rc_car.GIF';
-
+import hackathon from './assets/hackathon.png';
 
 import React from 'react';
 import './App.css';
@@ -135,10 +135,10 @@ export default function App() {
     },
     {
       id: 5,
-      title: "Wharton Hack-AI-thon – AI Review Intelligence System",
+      title: "Finalist in Wharton Hack-AI-thon – AI Review Intelligence System",
       image: hackathon,
       description:
-        "Built AI system generating intelligent follow-up questions from hotel reviews (Expedia dataset) using ML and prompt engineering. Advanced to finals.",
+        "Built AI system generating intelligent follow-up questions from hotel reviews (Expedia dataset) using ML and prompt engineering. Advanced to final (Top 6 teams).",
       technologies: ["Python", "Machine Learning", "Prompt Engineering", "NLP"]
     }
   ];
