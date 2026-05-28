@@ -9,11 +9,10 @@ APP_NAME="portfolio"
 DOMAIN="louis-han.info"
 WWW_DOMAIN="www.louis-han.info"
 
-DEPLOY_DATE=$(date +%Y%m%d%H%M%S)
-TARGET_DIR="/var/www/portfolio_${DEPLOY_DATE}"
+APP_DIR="/var/www/portfolio"
 
 ############################################
-# SYSTEM SETUP (safe for repeat runs)
+# SYSTEM SETUP
 ############################################
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y git nginx curl certbot python3-certbot-nginx
@@ -25,7 +24,7 @@ if ! command -v node &> /dev/null; then
 fi
 
 ############################################
-# CLONE / UPDATE
+# SOURCE UPDATE
 ############################################
 cd /home/ubuntu
 
@@ -43,40 +42,37 @@ fi
 # BUILD
 ############################################
 npm install
+rm -rf node_modules/.vite
 rm -rf dist
 npm run build
 
 ############################################
-# DEPLOY (ZERO DOWNTIME)
+# DEPLOY (SIMPLE & SAFE)
 ############################################
-sudo mkdir -p "$TARGET_DIR"
-sudo cp -r dist/* "$TARGET_DIR"
-sudo chown -R www-data:www-data "$TARGET_DIR"
-
-sudo ln -sfn "$TARGET_DIR" /var/www/html
+sudo rm -rf $APP_DIR
+sudo mkdir -p $APP_DIR
+sudo cp -r dist/* $APP_DIR/
+sudo chown -R www-data:www-data $APP_DIR
 
 ############################################
-# NGINX CONFIG (ONLY HTTP - NO 443 HERE)
+# NGINX CONFIG (NO COMPLEXITY)
 ############################################
 sudo tee /etc/nginx/sites-available/portfolio > /dev/null <<EOF
 server {
     listen 80;
     server_name ${DOMAIN} ${WWW_DOMAIN};
 
-    root /var/www/html;
+    root ${APP_DIR};
     index index.html;
 
-    # React Single Page Application Routing
     location / {
-        try_files \$uri \$uri/ /index.html;
+        try_files \$uri /index.html;
     }
 
-    # 이미지 및 정적 자원 직접 서빙용 설정 추가 (MIME 타입 보장 및 캐싱)
-    location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|woff2?|eot|ttf|otf)$ {
-        expires 6m;
-        access_log off;
-        add_header Cache-Control "public";
-        try_files \$uri =404;
+    # prevent stale caching issues
+    location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico)$ {
+        expires -1;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 }
 EOF
@@ -88,13 +84,13 @@ sudo rm -f /etc/nginx/sites-enabled/default || true
 sudo ln -sf /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
 
 ############################################
-# START NGINX (HTTP ONLY FIRST)
+# TEST & RESTART
 ############################################
 sudo nginx -t
 sudo systemctl restart nginx
 
 ############################################
-# SSL SETUP (CERTBOT HANDLES 443 AUTOMATICALLY)
+# SSL (SAFE CERTBOT - NO REDIRECT CONTROL)
 ############################################
 sudo certbot --nginx \
   -d ${DOMAIN} \
@@ -104,7 +100,7 @@ sudo certbot --nginx \
   -m admin@${DOMAIN}
 
 ############################################
-# FINAL CHECK
+# FINAL
 ############################################
 sudo nginx -t
 sudo systemctl reload nginx
@@ -112,5 +108,5 @@ sudo systemctl reload nginx
 echo "======================================"
 echo "DEPLOY COMPLETE 🚀"
 echo "https://${DOMAIN}"
-echo "SSL handled by certbot (no manual 443 config)"
+echo "STABLE VITE + NGINX + CERTBOT SETUP"
 echo "======================================"
