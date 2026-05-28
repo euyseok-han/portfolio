@@ -56,7 +56,7 @@ sudo cp -r dist/* "$TARGET_DIR"
 sudo chown -R www-data:www-data "$TARGET_DIR"
 
 # 2. 기존 /var/www/html 심볼릭 링크를 새 폴더로 단숨에 교체 (Downtime 없음)
-sudo rm -f /var/www/html
+sudo rm -rf /var/www/html
 sudo ln -s "$TARGET_DIR" /var/www/html
 
 ############################################
