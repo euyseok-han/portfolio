@@ -101,7 +101,7 @@ export default function App() {
         "HTML/CSS/JavaScript"
       ],
       github_link: "https://github.com/euyseok-han/MEAM5100",
-      demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
+      demo: "",
       link: ""
     },
     {
