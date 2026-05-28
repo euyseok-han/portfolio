@@ -47,46 +47,9 @@ export default function App() {
       link: "",
       github_link: "https://github.com/euyseok-han/AAB_Drone"
     },
+    
     {
       id: 2,
-      title: "Dual Motor RC Car with Web Dashboard",
-      image: rcCar,
-      description:
-        "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
-      technologies: [
-        "ESP32-C3",
-        "Wi-Fi Communication",
-        "C++ / Arduino Framework",
-        "Quadrature Encoders",
-        "PID Control",
-        "SolidWorks",
-        "Laser Cutting",
-        "HTML/CSS/JavaScript"
-      ],
-      github_link: "https://github.com/euyseok-han/MEAM5100",
-      demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
-      link: ""
-    },
-    {
-      id: 3,
-      title: "Waldo",
-      image: waldo,
-      description:
-        "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
-      technologies: [
-        "ATmega32U",
-        "C (Register-Level Programming)",
-        "Servo Motors",
-        "SolidWorks",
-        "Rapid Prototyping"
-      ],
-      github: "",
-      demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
-      link: "",
-      github_link: ""
-    },
-    {
-      id: 4,
       title: "Patsol – AI Patent Search Engine",
       image: patsol,
       description:
@@ -106,7 +69,7 @@ export default function App() {
       github_link: ""
     },
     {
-      id: 5,
+      id: 3,
       title: "Wharton Hack-AI-thon – AI Review Intelligence System",
       image: hackathon,
       description:
@@ -116,8 +79,49 @@ export default function App() {
         "Machine Learning",
         "Prompt Engineering",
         "NLP"
-      ]
-    }
+      ],
+      link: "http://18.221.7.70/",
+      github_link: "https://github.com/WAIAI-Hack-AI-thon-2026/hack-ai-thon-submission-hb-presents/tree/aws-branch",
+
+    },
+    {
+      id: 4,
+      title: "Dual Motor RC Car with Web Dashboard",
+      image: rcCar,
+      description:
+        "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
+      technologies: [
+        "ESP32-C3",
+        "Wi-Fi Communication",
+        "C++ / Arduino Framework",
+        "Quadrature Encoders",
+        "PID Control",
+        "SolidWorks",
+        "Laser Cutting",
+        "HTML/CSS/JavaScript"
+      ],
+      github_link: "https://github.com/euyseok-han/MEAM5100",
+      demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
+      link: ""
+    },
+    {
+      id: 5,
+      title: "Waldo",
+      image: waldo,
+      description:
+        "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
+      technologies: [
+        "ATmega32U",
+        "C (Register-Level Programming)",
+        "Servo Motors",
+        "SolidWorks",
+        "Rapid Prototyping"
+      ],
+      github: "",
+      demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
+      link: "",
+      github_link: ""
+    },
   ];
 
   const leaderships = [
@@ -245,7 +249,7 @@ export default function App() {
 
   {project.link && (
     <a href={project.link} target="_blank" rel="noopener noreferrer">
-      <img src={link} alt="link" className="link-icon" />
+      Link<img src={link} alt="link" className="link-icon" />
     </a>
   )}
 
@@ -292,7 +296,7 @@ export default function App() {
 
                   {item.link && (
                     <a href={item.link} target="_blank" rel="noopener noreferrer">
-                      Link
+                      Link<img src={link} alt="link" className="link-icon" />
                     </a>
                   )}
                 </div>
