@@ -236,22 +236,26 @@ export default function App() {
                   </div>
 
                   <div className="project-links">
-                    {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                    )}
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">
-                        Link
-                      </a>
-                    )}
-                    {project.github_link && (
-                      <a href={project.github_link} target="_blank" rel="noopener noreferrer">
-                        GitHub
-                      </a>
-                    )}
-                  </div>
+
+  {project.demo && (
+    <a href={project.demo} target="_blank" rel="noopener noreferrer">
+      <img src={youtubeLogo} alt="demo" className="link-icon" />
+    </a>
+  )}
+
+  {project.link && (
+    <a href={project.link} target="_blank" rel="noopener noreferrer">
+      <img src={link} alt="link" className="link-icon" />
+    </a>
+  )}
+
+  {project.github_link && (
+    <a href={project.github_link} target="_blank" rel="noopener noreferrer">
+      <img src={githubLogo} alt="github" className="link-icon" />
+    </a>
+  )}
+
+</div>
 
                 </div>
               </div>
