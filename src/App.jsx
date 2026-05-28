@@ -16,9 +16,9 @@ import hackathon from './assets/hackathon.png';
 
 import React from 'react';
 import './App.css';
+
 export default function App() {
 
-  /* ================= PROFILE ================= */
   const profile = {
     name: "Louis Han",
     image: "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no",
@@ -28,7 +28,6 @@ export default function App() {
       "Former Korean Air Force officer and VP of UPenn MEGA with experience in large-scale systems, manufacturing, and cross-functional engineering teams."
   };
 
-  /* ================= EDUCATION ================= */
   const education = [
     {
       school: "University of Pennsylvania",
@@ -43,7 +42,6 @@ export default function App() {
     }
   ];
 
-  /* ================= EXPERIENCE ================= */
   const experience = [
     {
       title: "Research Assistant – Micro Sensors & Micro Actuators Group",
@@ -82,37 +80,23 @@ export default function App() {
     }
   ];
 
-  /* ================= PROJECTS ================= */
   const projects = [
     {
       id: 1,
       title: "Tiny Drone Research (Prof. Mark G. Allen)",
       image: drone,
       description:
-        "End-to-end micro UAV development: chassis design, motor–propeller optimization, aerodynamic modeling, 3D-printed fabrication, and Python-based aluminum-air battery testing automation pipeline for performance evaluation and optimization.",
-      technologies: [
-        "Python",
-        "Aerodynamics",
-        "SolidWorks",
-        "3D Printing",
-        "Battery Testing Automation"
-      ],
+        "End-to-end micro UAV development: chassis design, motor–propeller optimization, aerodynamic modeling, 3D-printed fabrication, and Python-based aluminum-air battery testing automation pipeline.",
+      technologies: ["Python", "Aerodynamics", "SolidWorks", "3D Printing"],
       github_link: "https://github.com/euyseok-han/AAB_Drone"
     },
     {
       id: 2,
-      title: "Dual Motor Autonomous RC Car with Web Dashboard",
+      title: "Dual Motor Autonomous RC Car",
       image: rcCar,
       description:
-        "ESP32-C3 robotic car with PID speed control, quadrature encoders, ToF-based wall detection, autonomous navigation, and real-time web telemetry dashboard.",
-      technologies: [
-        "ESP32-C3",
-        "C++",
-        "PID Control",
-        "Wi-Fi",
-        "ToF Sensors",
-        "SolidWorks"
-      ],
+        "ESP32-C3 robotic car with PID control, encoders, ToF sensing, autonomous navigation, and web dashboard.",
+      technologies: ["ESP32-C3", "C++", "PID Control"],
       github_link: "https://github.com/euyseok-han/MEAM5100",
       demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared"
     },
@@ -121,51 +105,48 @@ export default function App() {
       title: "Waldo 2-DOF Input Device",
       image: waldo,
       description:
-        "Built motion-mapping system using ATmega32U, potentiometers, servo control, and register-level C programming with SolidWorks-fabricated structure.",
-      technologies: ["ATmega32U", "C", "Servo Control", "SolidWorks"]
+        "Motion-mapping device using ATmega32U, potentiometers, servo control, and register-level C programming.",
+      technologies: ["ATmega32U", "C", "Servo Control"]
     },
     {
       id: 4,
       title: "Patsol – AI Patent Search Engine",
       image: patsol,
       description:
-        "RAG-based patent search system using HuggingFace + Elasticsearch enabling natural language query over patents instead of keyword search.",
-      technologies: ["React", "FastAPI", "Elasticsearch", "RAG", "AWS"],
+        "RAG-based patent search system using HuggingFace + Elasticsearch.",
+      technologies: ["React", "FastAPI", "Elasticsearch", "RAG"],
       link: "https://patsol.kr/"
     },
     {
       id: 5,
-      title: "Finalist in Wharton Hack-AI-thon – AI Review Intelligence System",
+      title: "Wharton Hack-AI-thon Project",
       image: hackathon,
       description:
-        "Built AI system generating intelligent follow-up questions from hotel reviews (Expedia dataset) using ML and prompt engineering. Advanced to final (Top 6 teams).",
-      technologies: ["Python", "Machine Learning", "Prompt Engineering", "NLP"]
+        "AI system generating intelligent follow-up questions from hotel reviews.",
+      technologies: ["Python", "ML", "NLP"]
     }
   ];
 
-  /* ================= LEADERSHIP ================= */
   const leaderships = [
     {
       title: "Vice President – UPenn MEGA",
       period: "Sep 2025 – Present",
       description:
-        "Organizing events and workshops for 300+ graduate students, fostering professional development and community."
+        "Organizing events and workshops for 300+ graduate students."
     },
     {
       title: "Lab Staff – UPenn Garage Lab",
       period: "Oct 2025 – Present",
       description:
-        "Assisting students with machining tools (mill, band saw, sander) and ensuring safe fabrication practices."
+        "Assisting machining and fabrication operations."
     },
     {
-      title: "Operations Officer (Captain) – Korean Air Force",
-      period: "Mar 2019 – May 2022",
+      title: "Operations Officer – Korean Air Force",
+      period: "2019 – 2022",
       description:
-        "Led 50 personnel in airstrip operations, maintenance coordination, and mission support execution."
+        "Led 50 personnel in airstrip operations and logistics."
     }
   ];
-
-  /* ================= UI COMPONENTS ================= */
 
   const Section = ({ title, children }) => (
     <section className="section">
@@ -209,9 +190,27 @@ export default function App() {
 
       <Section title="Projects">
         {projects.map((p) => (
-          <div key={p.id}>
+          <div key={p.id} style={{ marginBottom: "40px" }}>
+
             <h4>{p.title}</h4>
+
+            <img
+              src={p.image}
+              alt={p.title}
+              style={{
+                width: "100%",
+                maxWidth: "500px",
+                borderRadius: "10px",
+                margin: "10px 0"
+              }}
+            />
+
             <p>{p.description}</p>
+
+            <div style={{ fontSize: "14px", opacity: 0.7 }}>
+              {p.technologies?.join(" · ")}
+            </div>
+
           </div>
         ))}
       </Section>
