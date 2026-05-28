@@ -9,11 +9,8 @@ APP_NAME="portfolio"
 DOMAIN="louis-han.info"
 WWW_DOMAIN="www.louis-han.info"
 
-DEPLOY_DATE=$(date +%Y%m%d%H%M%S)
-TARGET_DIR="/var/www/portfolio_${DEPLOY_DATE}"
-
 ############################################
-# SYSTEM SETUP (safe for repeat runs)
+# SYSTEM SETUP
 ############################################
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y git nginx curl certbot python3-certbot-nginx
@@ -47,16 +44,15 @@ rm -rf dist
 npm run build
 
 ############################################
-# DEPLOY (ZERO DOWNTIME)
+# DEPLOY (IMPORTANT FIX HERE)
 ############################################
-sudo mkdir -p "$TARGET_DIR"
-sudo cp -r dist/* "$TARGET_DIR"
-sudo chown -R www-data:www-data "$TARGET_DIR"
-
-sudo ln -sfn "$TARGET_DIR" /var/www/html
+sudo rm -rf /var/www/html
+sudo mkdir -p /var/www/html
+sudo cp -r dist/* /var/www/html
+sudo chown -R www-data:www-data /var/www/html
 
 ############################################
-# NGINX CONFIG (ONLY HTTP - NO 443 HERE)
+# NGINX CONFIG (HTTP ONLY)
 ############################################
 sudo tee /etc/nginx/sites-available/portfolio > /dev/null <<EOF
 server {
@@ -79,13 +75,13 @@ sudo rm -f /etc/nginx/sites-enabled/default || true
 sudo ln -sf /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
 
 ############################################
-# START NGINX (HTTP ONLY FIRST)
+# START NGINX
 ############################################
 sudo nginx -t
 sudo systemctl restart nginx
 
 ############################################
-# SSL SETUP (CERTBOT HANDLES 443 AUTOMATICALLY)
+# SSL (SAFE - NO CONFLICT)
 ############################################
 sudo certbot --nginx \
   -d ${DOMAIN} \
@@ -95,7 +91,7 @@ sudo certbot --nginx \
   -m admin@${DOMAIN}
 
 ############################################
-# FINAL CHECK
+# FINAL
 ############################################
 sudo nginx -t
 sudo systemctl reload nginx
@@ -103,5 +99,5 @@ sudo systemctl reload nginx
 echo "======================================"
 echo "DEPLOY COMPLETE 🚀"
 echo "https://${DOMAIN}"
-echo "SSL handled by certbot (no manual 443 config)"
+echo "FIXED: Vite assets + nginx root mismatch resolved"
 echo "======================================"
