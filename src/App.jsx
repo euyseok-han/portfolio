@@ -21,7 +21,7 @@ export default function App() {
   // Your personal information
   const profile = {
     name: "Louis Han",
-    image: "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no",
+    image: "https://lh3.googleusercontent.com/a/ACg8ocJyvvY2sbqzKgED0A86paFCDNbZgciTBTminkMMNqEFPAqIS3Grq-GC_bN_1ulfME77qRqqej5-PkTw25DT5AvhoWIuYN4U=s576-c-no",
     bio1: "✅ Mechanical Engineer with mechatronics and manufacturing expertise, professional programming experience, and research in tiny drone design under Prof. Mark G. Allen",
     bio2: "✅ Leadership and teamwork skills honed as a Korean Air Force officer and VP of the UPenn Mechanical Engineering Graduate Association (MEGA)"
   };
@@ -249,7 +249,7 @@ export default function App() {
 
   {project.link && (
     <a href={project.link} target="_blank" rel="noopener noreferrer">
-      Link<img src={link} alt="link" className="link-icon" />
+      <img src={link} alt="link" className="link-icon" />
     </a>
   )}
 

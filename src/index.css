@@ -61,10 +61,12 @@ a {
   padding: 0rem 0rem;
   border-radius: 0.5rem;
 }
-.header-item-bigger{
+
+.header-item-bigger {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
+
 .header-item a {
   color: #93c5fd;
   text-decoration: none;
@@ -106,7 +108,6 @@ a {
 .profile-name {
   font-size: 1.5rem;
   font-weight: 700;
-  /* margin-top: 1rem; */
   margin-bottom: 1.5rem;
 }
 
@@ -117,23 +118,75 @@ a {
   max-width: 730px;
   margin-left: auto;
   margin-right: auto;
-  font-weight: bold; /
+  font-weight: bold;
 }
 
 /* =============== SOCIAL LINKS =============== */
 .school-logo {
-  width: 85px;       
+  width: 85px;
   height: 28px;
-  margin-left: 8px;  /* space between text and image */
-  vertical-align: middle; /* aligns with text */
+  margin-left: 8px;
+  vertical-align: middle;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 0 rem;
+  gap: 16px; /* FIXED */
   margin-top: 1.5rem;
 }
+
+/* ===== ICONS ===== */
+
+.social-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  margin: 0 10px;
+  padding: 6px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: white;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.youtube-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin: 0 6px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: white;
+  transition: transform 0.2s ease;
+}
+
+.youtube-icon:hover {
+  transform: scale(1.1);
+}
+
+.link-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin: 0 6px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: white;
+  transition: transform 0.2s ease;
+}
+
+.link-icon:hover {
+  transform: scale(1.1);
+}
+
+/* =============== BUTTONS =============== */
 
 .btn {
   display: inline-block;
@@ -143,67 +196,15 @@ a {
   transition: all 0.2s ease;
 }
 
-.social-icon {
-  width:50px;
-  height: 50px;
-  object-fit: contain;
-  vertical-align: middle;
-  transition: transform 0.2s ease;
-}
-
-.social-icon:hover {
-  transform: scale(1.1);
-}
-
-.youtube-icon {
-  margin-left: 5px;
-  width:20px;
-  height: 20px;
-  object-fit: contain;
-  vertical-align: middle;
-  transition: transform 0.2s ease;
-}
-
-.youtube-icon:hover {
-  transform: scale(1.1);
-}
-
-.link-icon {
-  margin-left: 5px;
-  width:20px;
-  height: 20px;
-  object-fit: contain;
-  vertical-align: middle;
-  transition: transform 0.2s ease;
-}
-
-.link-icon:hover {
-  transform: scale(1.1);
-}
-
-.btn-github {
-  background-color: #24292e;
-  color: white;
-}
-
-.btn-linkedin {
-  background-color: #ffffff;
-  color: white;
-}
-
-.btn-email {
-  background-color: #10b981;
-  color: white;
-}
-
 .btn:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
 
 /* =============== PROJECTS SECTION =============== */
+
 .projects-section {
-  margin-top: 4rem; 
+  margin-top: 4rem;
 }
 
 .section-title {
@@ -217,7 +218,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-   align-items: center;
+  align-items: center;
 }
 
 .project-card {
@@ -227,10 +228,9 @@ a {
   border-radius: 1rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
-  max-height: 500px;       /* Limit height */
-  overflow-y: auto; 
+  max-height: 500px;
+  overflow-y: auto;
   width: 128%;
-  
 }
 
 .project-card:hover {
@@ -246,7 +246,7 @@ a {
   height: 100%;
   object-fit: cover;
   border-right: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px; /* optional: slightly rounded corners */
+  border-radius: 4px;
 }
 
 .project-details {
@@ -281,6 +281,7 @@ a {
 }
 
 /* =============== TECHNOLOGIES =============== */
+
 .technologies-section {
   margin-top: 1rem;
 }
@@ -305,12 +306,46 @@ a {
   font-weight: 500;
 }
 
-/* =============== PROJECT LINKS =========*/
+/* =============== PROJECT LINKS =============== */
 
 .project-links {
   display: flex;
-  justify-content: center;   /* centers horizontally */
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;               /* space between multiple links if added later */
-  margin-top: 1rem;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+/* 프로젝트 아이콘만 "버튼처럼" 보이게 정리 */
+.project-links .link-icon {
+  width: 42px;
+  height: 42px;
+
+  padding: 8px; /* 이게 핵심: 시각적 중심 맞춰줌 */
+
+  object-fit: contain;
+
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-links .link-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+/* =============== FOOTER =============== */
+
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: #6b7280;
 }
