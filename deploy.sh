@@ -1,6 +1,6 @@
 ```bash
 #!/bin/bash
-set -e
+set -ex
 
 ############################################
 # CONFIG
@@ -21,7 +21,7 @@ sudo apt update
 # INSTALL REQUIRED PACKAGES
 ############################################
 
-sudo apt install -y \
+sudo DEBIAN_FRONTEND=noninteractive apt install -y \
     git \
     nginx \
     curl
@@ -31,7 +31,7 @@ sudo apt install -y \
 ############################################
 
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt install -y nodejs
+sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs
 
 ############################################
 # CLONE OR UPDATE REPO
