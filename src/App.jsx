@@ -18,213 +18,294 @@ import React from 'react';
 import './App.css';
 
 export default function App() {
-
+  // Your personal information
   const profile = {
     name: "Louis Han",
     image: "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no",
-    bio1:
-      "Mechanical Engineer specializing in robotics, mechatronics, and full-stack system development with research experience in UAVs and intelligent systems.",
-    bio2:
-      "Former Korean Air Force officer and VP of UPenn MEGA with experience in large-scale systems, manufacturing, and cross-functional engineering teams."
+    bio1: "✅ Mechanical Engineer with mechatronics and manufacturing expertise, professional programming experience, and research in tiny drone design under Prof. Mark G. Allen",
+    bio2: "✅ Leadership and teamwork skills honed as a Korean Air Force officer and VP of the UPenn Mechanical Engineering Graduate Association (MEGA)"
   };
 
-  const education = [
-    {
-      school: "University of Pennsylvania",
-      degree: "M.S.E. Mechanical Engineering and Applied Mechanics",
-      detail: "Concentration: Mechatronic & Robotic Systems",
-      period: "May 2027"
-    },
-    {
-      school: "Seoul National University",
-      degree: "B.S. Mechanical & Aerospace Engineering",
-      period: "Feb 2017"
-    }
-  ];
-
-  const experience = [
-    {
-      title: "Research Assistant – Micro Sensors & Micro Actuators Group",
-      org: "University of Pennsylvania",
-      period: "Oct 2025 – Present",
-      description:
-        "Designed end-to-end drone systems including chassis, motor–propeller optimization, and fabrication. Developed Python-based aluminum-air battery testing automation and performance optimization pipeline."
-    },
-    {
-      title: "Research Intern – Advanced Machine Intelligence Lab",
-      org: "KAIST",
-      period: "Jun 2025 – Aug 2025",
-      description:
-        "Built PyTorch-based vision pipeline using RGB/NIR images for material property prediction and 3D point cloud annotation."
-    },
-    {
-      title: "Software Developer / Co-founder",
-      org: "Patsol",
-      period: "Oct 2024 – Jan 2025",
-      description:
-        "Architected RAG-based patent search system using HuggingFace and Elasticsearch. Secured $71K seed funding via VC pitch (SpringCamp)."
-    },
-    {
-      title: "Backend Software Developer",
-      org: "Yogiyo",
-      period: "Dec 2022 – Sep 2024",
-      description:
-        "Built scalable backend systems for 500K+ merchants. Reduced query latency (20s → ~2s) and automated 1M+ daily orders using Airflow + Django APIs."
-    },
-    {
-      title: "Patent Examiner",
-      org: "Korean Intellectual Property Office",
-      period: "2018 – 2019, 2022",
-      description:
-        "Conducted prior-art searches and patent examinations under Korean patent law, evaluating novelty and industrial applicability."
-    }
-  ];
-
+  // Projects (UPDATED ONLY CONTENT)
   const projects = [
     {
       id: 1,
-      title: "Tiny Drone Research (Prof. Mark G. Allen)",
+      title: "Tiny Drone Research with Prof. Mark G. Allen",
       image: drone,
       description:
-        "End-to-end micro UAV development: chassis design, motor–propeller optimization, aerodynamic modeling, 3D-printed fabrication, and Python-based aluminum-air battery testing automation pipeline.",
-      technologies: ["Python", "Aerodynamics", "SolidWorks", "3D Printing"],
+        "Designing and optimizing a ~25 g micro-drone in Penn’s Micro Sensors and Micro Actuators Group to target a 30-minute hover time using Python-based aluminum-air battery testing automation, performance characterization pipeline, and a SolidWorks chassis fabricated via 3D printing and laser cutting.",
+      technologies: [
+        "Python",
+        "Aerodynamics",
+        "SolidWorks",
+        "3D Printing",
+        "Laser Cutting",
+        "Battery Testing Automation"
+      ],
+      github: "",
+      demo: "",
+      link: "",
       github_link: "https://github.com/euyseok-han/AAB_Drone"
     },
     {
       id: 2,
-      title: "Dual Motor Autonomous RC Car",
+      title: "Dual Motor RC Car with Web Dashboard",
       image: rcCar,
       description:
-        "ESP32-C3 robotic car with PID control, encoders, ToF sensing, autonomous navigation, and web dashboard.",
-      technologies: ["ESP32-C3", "C++", "PID Control"],
+        "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
+      technologies: [
+        "ESP32-C3",
+        "Wi-Fi Communication",
+        "C++ / Arduino Framework",
+        "Quadrature Encoders",
+        "PID Control",
+        "SolidWorks",
+        "Laser Cutting",
+        "HTML/CSS/JavaScript"
+      ],
       github_link: "https://github.com/euyseok-han/MEAM5100",
-      demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared"
+      demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
+      link: ""
     },
     {
       id: 3,
-      title: "Waldo 2-DOF Input Device",
+      title: "Waldo",
       image: waldo,
       description:
-        "Motion-mapping device using ATmega32U, potentiometers, servo control, and register-level C programming.",
-      technologies: ["ATmega32U", "C", "Servo Control"]
+        "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
+      technologies: [
+        "ATmega32U",
+        "C (Register-Level Programming)",
+        "Servo Motors",
+        "SolidWorks",
+        "Rapid Prototyping"
+      ],
+      github: "",
+      demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
+      link: "",
+      github_link: ""
     },
     {
       id: 4,
       title: "Patsol – AI Patent Search Engine",
       image: patsol,
       description:
-        "RAG-based patent search system using HuggingFace + Elasticsearch.",
-      technologies: ["React", "FastAPI", "Elasticsearch", "RAG"],
-      link: "https://patsol.kr/"
+        "Architected and implemented end-to-end RAG patent-search pipeline using Python, HuggingFace, Elasticsearch, enabling inventors to query patents via natural language instead of Boolean keyword filters",
+      technologies: [
+        "React",
+        "FastAPI",
+        "Elasticsearch",
+        "RAG (Retrieval-Augmented Generation)",
+        "AWS",
+        "Git",
+        "Test-Driven Development (TDD)"
+      ],
+      github: "",
+      demo: "",
+      link: "https://patsol.kr/",
+      github_link: ""
     },
     {
       id: 5,
-      title: "Wharton Hack-AI-thon Project",
+      title: "Wharton Hack-AI-thon – AI Review Intelligence System",
       image: hackathon,
       description:
-        "AI system generating intelligent follow-up questions from hotel reviews.",
-      technologies: ["Python", "ML", "NLP"]
+        "Built AI system that generates intelligent follow-up questions from hotel reviews (Expedia dataset) using machine learning and prompt engineering. Selected as a finalist (Top 6 teams) in Wharton Hack-AI-thon.",
+      technologies: [
+        "Python",
+        "Machine Learning",
+        "Prompt Engineering",
+        "NLP"
+      ]
     }
   ];
 
   const leaderships = [
     {
-      title: "Vice President – UPenn MEGA",
-      period: "Sep 2025 – Present",
+      id: 1,
+      title: "Vice President @ UPenn Mechanical Engineering Graduate Association (MEGA)",
+      period: "September 2025 - Present",
+      image: mega,
       description:
-        "Organizing events and workshops for 300+ graduate students."
+        "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
+      description2: "",
+      link: "https://mega.seas.upenn.edu/mega-board/",
     },
     {
-      title: "Lab Staff – UPenn Garage Lab",
-      period: "Oct 2025 – Present",
+      id: 2,
+      title: "Lab Instructor & Tool Library Staff @ UPenn Garage Lab",
+      period: "October 2025 - Present",
+      image: garage,
       description:
-        "Assisting machining and fabrication operations."
+        "As a staff member in a UPenn lab equipped with machining tools such as a mill, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
+      description2: "",
+      link: "https://meamlabs.seas.upenn.edu/garage-lab-and-tool-library/"
     },
     {
-      title: "Operations Officer – Korean Air Force",
-      period: "2019 – 2022",
+      id: 3,
+      title: "Operations Officer, Captain @ The Korean Air Force",
+      period: "March 2019 - May 2022",
+      image: mil,
       description:
-        "Led 50 personnel in airstrip operations and logistics."
+        "As an Operations Officer in the Korean Air Force, I led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives.",
+      description2:
+        "(The photo was taken with my commander (a colonel) on the day I was discharged)",
+      link: ""
     }
   ];
-
-  const Section = ({ title, children }) => (
-    <section className="section">
-      <h3 className="section-title">{title}</h3>
-      {children}
-    </section>
-  );
 
   return (
     <div className="app">
 
-      {/* PROFILE */}
+      {/* Header */}
       <header className="header">
-        <h1>{profile.name}</h1>
-        <p>{profile.bio1}</p>
-        <p>{profile.bio2}</p>
+        <div className="container">
+          <div className="header-contents">
+            <p className="header-item-bigger">Mechanical Engineer | Software Developer</p>
+          </div>
+          <h1 className="header-title">Louis Han</h1>
+
+          <div className="header-contents">
+            <p className="header-item">📍 Philadelphia, PA, USA</p>
+            <p className="header-item">📧 <a href="mailto:louishan@seas.upenn.edu">louishan@seas.upenn.edu</a></p>
+            <p className="header-item">
+              🎓 M.S.E. in Mechanical Engineering and Applied Mechanics, University of Pennsylvania
+              <img src={upennLogo} alt="UPenn Logo" className="school-logo" />
+            </p>
+
+            <br />
+            <h3>Note: This portfolio website is optimized for desktop browsing</h3>
+          </div>
+        </div>
       </header>
 
-      <Section title="Education">
-        {education.map((e, i) => (
-          <div key={i}>
-            <b>{e.school}</b>
-            <div>{e.degree}</div>
-            <div>{e.detail}</div>
-            <div>{e.period}</div>
-            <br />
-          </div>
-        ))}
-      </Section>
+      {/* Profile */}
+      <section className="profile-section">
+        <div className="container">
+          <div className="profile-card">
+            <div className="profile-banner"></div>
 
-      <Section title="Experience">
-        {experience.map((e, i) => (
-          <div key={i}>
-            <b>{e.title}</b> @ {e.org}
-            <div>{e.period}</div>
-            <p>{e.description}</p>
-            <br />
-          </div>
-        ))}
-      </Section>
+            <div className="profile-content">
+              <img src={profile.image} alt={profile.name} className="profile-image" />
+              <h2 className="profile-name">{profile.name}</h2>
 
-      <Section title="Projects">
-        {projects.map((p) => (
-          <div key={p.id} style={{ marginBottom: "40px" }}>
+              <p className="profile-bio">{profile.bio1}</p>
+              <p className="profile-bio">{profile.bio2}</p>
 
-            <h4>{p.title}</h4>
-
-            <img
-              src={p.image}
-              alt={p.title}
-              style={{
-                width: "100%",
-                maxWidth: "500px",
-                borderRadius: "10px",
-                margin: "10px 0"
-              }}
-            />
-
-            <p>{p.description}</p>
-
-            <div style={{ fontSize: "14px", opacity: 0.7 }}>
-              {p.technologies?.join(" · ")}
+              <div className="social-links">
+                <a href="https://www.linkedin.com/in/uiseok-han-79a546229/" target="_blank" rel="noopener noreferrer">
+                  <img src={linkedinLogo} className="social-icon" alt="LinkedIn" />
+                </a>
+                <a href="https://github.com/euyseok-han/" target="_blank" rel="noopener noreferrer">
+                  <img src={githubLogo} className="social-icon" alt="GitHub" />
+                </a>
+                <a href="mailto:louishan@seas.upenn.edu">
+                  <img src={mailLogo} className="social-icon" alt="Email" />
+                </a>
+              </div>
             </div>
-
           </div>
-        ))}
-      </Section>
+        </div>
+      </section>
 
-      <Section title="Leadership">
-        {leaderships.map((l, i) => (
-          <div key={i}>
-            <b>{l.title}</b>
-            <div>{l.period}</div>
-            <p>{l.description}</p>
-            <br />
+      {/* Projects */}
+      <section className="projects-section">
+        <div className="container">
+          <h3 className="section-title">Featured Projects</h3>
+
+          <div className="projects-list">
+            {projects.map((project, index) => (
+              <div key={project.id} className="project-card">
+
+                <div className="project-image-container">
+                  <img src={project.image} alt={project.title} className="project-image" />
+                </div>
+
+                <div className="project-details">
+                  <span className="project-number">
+                    PROJECT {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <h4 className="project-title">{project.title}</h4>
+                  <p className="project-description">{project.description}</p>
+
+                  <div className="technologies-list">
+                    {project.technologies.map((tech, idx) => (
+                      <span key={idx} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-links">
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                    )}
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        Link
+                      </a>
+                    )}
+                    {project.github_link && (
+                      <a href={project.github_link} target="_blank" rel="noopener noreferrer">
+                        GitHub
+                      </a>
+                    )}
+                  </div>
+
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </Section>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className="projects-section">
+        <div className="container">
+          <h3 className="section-title">Leadership Experiences</h3>
+
+          <div className="projects-list">
+            {leaderships.map((item, index) => (
+              <div key={item.id} className="project-card">
+
+                <div className="project-image-container">
+                  <img src={item.image} alt={item.title} className="project-image" />
+                </div>
+
+                <div className="project-details">
+                  <span className="project-number">
+                    Leadership {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <h4 className="project-title">{item.title}</h4>
+                  <p className="project-period">{item.period}</p>
+                  <p className="project-description">{item.description}</p>
+
+                  {item.description2 && (
+                    <p className="project-description">{item.description2}</p>
+                  )}
+
+                  {item.link && (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer">
+                      Link
+                    </a>
+                  )}
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <p>© 2025 Louis Han</p>
+          <p>Built with React + AWS</p>
+        </div>
+      </footer>
 
     </div>
   );
