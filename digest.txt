@@ -1,0 +1,990 @@
+Directory structure:
+└── portfolio/
+    ├── README.md
+    ├── deploy.sh
+    ├── eslint.config.js
+    ├── index.html
+    ├── package.json
+    ├── vite.config.js
+    └── src/
+        ├── App.css
+        ├── App.jsx
+        ├── index.css
+        ├── main.jsx
+        └── assets/
+            └── mil.JPG
+
+================================================
+FILE: README.md
+================================================
+# 🌐 Louis's Portfolio Website
+
+This repository contains the source code for my **personal portfolio website**, built to showcase my projects, experiences, and skills.  
+The website is built with **React (Vite)**, hosted on **AWS EC2**, and includes an **automated deployment system** that updates the live site whenever code changes are pushed.
+
+---
+
+## 🚀 Features
+
+- ⚛️ **Built with React + Vite** for fast development and optimized build performance  
+- ☁️ **Hosted on AWS EC2** for full control over server configuration  
+- 🔄 **Automated CI/CD** pipeline that deploys new builds automatically on every code update  
+- 📱 **Responsive design** optimized for desktop browsing  
+- 🎨 **Modern UI** with clean, minimal styling
+
+---
+
+## 🏗️ Tech Stack
+
+| Category | Technologies Used |
+|-----------|-------------------|
+| Frontend | React, Vite, JavaScript, HTML, CSS |
+| Hosting | AWS EC2 (Ubuntu) |
+| CI/CD | GitHub Actions (automated deployment) |
+| Web Server | Nginx |
+| Domain | Route 53 + Custom Domain(GoDaddy) |
+
+---
+
+## ⚙️ Deployment Workflow
+
+1. **Local Development**
+   ```bash
+   npm install
+   npm run dev
+
+
+
+================================================
+FILE: deploy.sh
+================================================
+set -e
+
+############################################
+# CONFIG
+############################################
+
+REPO_URL="https://github.com/euyseok-han/portfolio.git"
+APP_NAME="portfolio"
+APP_PORT=3000
+DOMAIN="louis-han.info"
+WWW_DOMAIN="www.louis-han.info"
+
+############################################
+# UPDATE SYSTEM
+############################################
+
+sudo apt update
+sudo apt upgrade -y
+
+############################################
+# INSTALL REQUIRED PACKAGES
+############################################
+
+sudo apt install -y \
+    git \
+    nginx \
+    curl
+
+############################################
+# INSTALL NODE.JS
+############################################
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+############################################
+# CLONE REPO
+############################################
+
+cd /home/ubuntu
+
+if [ -d "$APP_NAME" ]; then
+    echo "Repo already exists. Pulling latest..."
+    cd $APP_NAME
+    git pull
+else
+    git clone $REPO_URL
+    cd $APP_NAME
+fi
+
+############################################
+# INSTALL DEPENDENCIES
+############################################
+
+npm install
+
+############################################
+# BUILD APP
+############################################
+
+npm run build || true
+
+############################################
+# CREATE SYSTEMD SERVICE
+############################################
+
+sudo tee /etc/systemd/system/${APP_NAME}.service > /dev/null <<EOF
+[Unit]
+Description=${APP_NAME} production service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/${APP_NAME}
+ExecStart=/usr/bin/npm start
+Restart=always
+echo "======================================"
+
+
+================================================
+FILE: eslint.config.js
+================================================
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs['recommended-latest'],
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+
+
+
+================================================
+FILE: index.html
+================================================
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/upenn_s.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Louis Han</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+
+
+================================================
+FILE: package.json
+================================================
+{
+  "name": "my-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "autoprefixer": "^10.4.21",
+    "babel-plugin-react-compiler": "^19.1.0-rc.3",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.16",
+    "vite": "^7.1.7"
+  }
+}
+
+
+
+================================================
+FILE: vite.config.js
+================================================
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler']],
+      },
+    }),
+  ],
+})
+
+
+
+================================================
+FILE: src/App.css
+================================================
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+================================================
+FILE: src/App.jsx
+================================================
+import linkedinLogo from './assets/LinkedIn_icon.png';
+import githubLogo from './assets/github.png';
+import mailLogo from './assets/mail_icon.png';
+import upennLogo from './assets/upenn.png';
+import youtubeLogo from './assets/youtube_icon.png';
+import miniCar from './assets/arduino_car.png';
+import patsol from './assets/patsol.png';
+import link from './assets/link.png';
+import drone from './assets/drone.jpg';
+import waldo from './assets/waldo.gif';
+import mega from './assets/mega.png';
+import mil from './assets/mil.JPG';
+import garage from './assets/garage.jpg';
+import rcCar from './assets/rc_car.GIF';
+
+
+import React from 'react';
+import './App.css';
+
+export default function App() {
+  // Your personal information
+  const profile = {
+    name: "Louis Han",
+    image: "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no", // Replace with your photo URL
+    bio1: "✅ Mechanical Engineer with mechatronics and manufacturing expertise, professional programming experience, and research in tiny drone design under Prof. Mark G. Allen",
+    bio2: "✅ Leadership and teamwork skills honed as a Korean Air Force officer and VP of the UPenn Mechanical Engineering Graduate Association (MEGA)"
+  };
+
+  // Your projects data
+const projects = [
+  {
+    id: 1,
+    title: "Tiny Drone Research with Prof. Mark G. Allen",
+    image: drone,
+    description:
+      "Perform Python-based mass/power modeling, motor–propeller optimization, and SolidWorks chassis design with 3D-printed fabrication for developing compact, high-efficiency surveillance drones",
+    technologies: [
+      "Python",
+      "Aerodynamics",
+      "SolidWorks",
+      "3D Printing",
+      "Laser Cutting"
+    ],
+    github: "",
+    demo: "",
+    link: "",
+    github_link: "https://github.com/euyseok-han/AAB_Drone"
+  },
+  {
+    id: 2,
+    title: "Dual Motor RC Car with Web Dashboard",
+    image: rcCar,
+    description:
+      "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
+    technologies: [
+      "ESP32-C3",
+      "Wi-Fi Communication",
+      "C++ / Arduino Framework",
+      "Quadrature Encoders",
+      "PID Control",
+      "SolidWorks",
+      "Laser Cutting",
+      "HTML/CSS/JavaScript"
+    ],
+    github_link: "https://github.com/euyseok-han/MEAM5100",
+    demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
+    link: ""
+  },
+  {
+    id: 3,
+    title: "Waldo",
+    image: waldo,
+    description:
+      "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
+    technologies: [
+      "ATmega32U",
+      "C (Register-Level Programming)",
+      "Servo Motors",
+      "SolidWorks",
+      "Rapid Prototyping"
+    ],
+    github: "",
+    demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
+    link: "",
+    github_link: ""
+  },
+  {
+    id: 4,
+    title: "Patsol – AI Patent Search Engine",
+    image: patsol,
+    description:
+      "Architected and implemented end-to-end RAG patent-search pipeline using Python, HuggingFace, Elasticsearch, enabling inventors to query patents via natural language instead of Boolean keyword filters",
+    technologies: [
+      "React",
+      "FastAPI",
+      "Elasticsearch",
+      "RAG (Retrieval-Augmented Generation)",
+      "AWS",
+      "Git",
+      "Test-Driven Development (TDD)"
+    ],
+    github: "",
+    demo: "",
+    link: "https://patsol.kr/",
+    github_link: ""
+  }
+];
+
+const leaderships = [
+    {
+      id: 1,
+      title: "Vice President @ UPenn Mechanical Engineering Graduate Association (MEGA)",
+      period: "September 2025 - Present",
+      image: mega,
+      description: "As the Vice President of MEGA, organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
+      description2: "",
+      link: "https://mega.seas.upenn.edu/mega-board/",
+    },
+    {
+      id: 2,
+      title: "Lab Instructor & Tool Library Staff @ UPenn Garage Lab",
+      period: "October 2025 - Present",
+      image: garage,
+      description: "As a staff member in a UPenn lab equipped with machining tools such as a mill, sander, and band saw, I assist and guide students in the safe and proper use of these machines",
+      description2: "",
+      link: "https://meamlabs.seas.upenn.edu/garage-lab-and-tool-library/"
+    },
+    {
+      id: 3,
+      title: "Operations Officer, Captain @ The Korean Air Force ",
+      period: "March 2019 - May 2022",
+      image: mil,
+      description: "As an Operations Officer in the Korean Air Force, I led a team of 50 personnel in managing daily airstrip maintenance, ensuring safety and efficiency while coordinating with multiple departments to support mission objectives. ",
+      description2: "(The photo was taken with my commander (a colonel) on the day I was discharged)",
+      link: ""
+    },
+    
+
+  ];
+
+
+  return (
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <div className="container">
+          <div className="header-contents">
+            <p className="header-item-bigger">Mechanical Engineer | Software Developer</p>
+          </div>
+          <h1 className="header-title">Louis Han</h1>
+          <div className="header-contents">
+            <p className="header-item">📍 Philadelphia, PA, USA</p>
+            <p className="header-item">📧 <a href="mailto:louishan@seas.upenn.edu">louishan@seas.upenn.edu</a></p>
+            <p className="header-item">🎓 M.S.E. in Mechanical Engineering and Applied Mechanics, University of Pennsylvania
+              <img 
+                src={upennLogo}      // import this at the top: import upennLogo from './assets/upenn.png';
+                alt="UPenn Logo" 
+                className="school-logo"
+              />
+            </p>
+            <br></br>
+            <h3>Note: This portfolio website is optimized for desktop browsing</h3>
+          </div>
+        </div>
+      </header>
+
+      {/* Profile Section */}
+      <section className="profile-section">
+        <div className="container">
+          <div className="profile-card">
+            <div className="profile-banner"></div>
+            <div className="profile-content">
+              <img 
+                src={profile.image} 
+                alt={profile.name}
+                className="profile-image"
+              />
+              <h2 className="profile-name">{profile.name}</h2>
+              <p className="profile-bio">{profile.bio1}</p>
+              <p className="profile-bio">{profile.bio2}</p>
+              
+              {/* Social Links */}
+              <div className="social-links">
+                
+                <a href="https://www.linkedin.com/in/uiseok-han-79a546229/" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
+                  <img src={linkedinLogo} alt="LinkedIn" className="social-icon"></img>
+                </a>
+                <a href="https://github.com/euyseok-han/" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
+                  <img src={githubLogo} alt="Github" className="social-icon"></img>
+                </a>
+                <a href="mailto:louishan@seas.upenn.edu" className="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
+                  <img src={mailLogo} alt="Email" className="social-icon"></img>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="projects-section">
+        <div className="container">
+          <h3 className="section-title">Featured Projects</h3>
+          
+          <div className="projects-list">
+            {projects.map((project, index) => (
+              <div key={project.id} className="project-card">
+                {/* Project Image - Left Side */}
+                <div className="project-image-container">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="project-image"
+                  />
+                </div>
+                
+                {/* Project Details - Right Side */}
+                <div className="project-details">
+                  <span className="project-number">
+                    PROJECT {String(index + 1).padStart(2, '0')}
+                  </span>
+                  
+                  <h4 className="project-title">{project.title}</h4>
+                  
+                  <p className="project-description">{project.description}</p>
+                  
+                  {/* Technologies */}
+                  <div className="technologies-section">
+                    <p className="technologies-label">Technologies Used:</p>
+                    <div className="technologies-list">
+                      {project.technologies.map((tech, idx) => (
+                        <span key={idx} className="tech-tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Links */}
+                  <div className="project-links">
+                  
+                    {project.demo && <a 
+                      href={project.demo}
+                      className="btn btn-demo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Demo Shorts  
+                         <img src={youtubeLogo} alt="Youtube Shorts" className="youtube-icon"></img>
+                    </a>}
+                    {project.link && <a
+                      href={project.link}
+                      className="btn btn-link"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                        Link
+                        <img src={link} alt="Link Icon" className="link-icon"></img>
+                    </a>}
+                    {project.github_link && <a
+                      href={project.github_link}
+                      className="btn btn-link"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                        Github Code
+                        <img src={githubLogo} alt="Github Icon" className="link-icon"></img>
+                    </a>}
+                    
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/*Leadership Experience Section*/}
+      <section className="projects-section">
+        <div className="container">
+          <h3 className="section-title">Leadership Experiences</h3>
+          
+          <div className="projects-list">
+            {leaderships.map((project, index) => (
+              <div key={project.id} className="project-card">
+                {/* Project Image - Left Side */}
+                <div className="project-image-container">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="project-image"
+                  />
+                </div>
+                
+                {/* Project Details - Right Side */}
+                <div className="project-details">
+                  <span className="project-number">
+                    Leadership Experience {String(index + 1).padStart(2, '0')}
+                  </span>
+                  
+                  <h4 className="project-title">{project.title}</h4>
+                  <p className='project-period'>{project.period}</p>
+                  <p className="project-description">{project.description}</p>
+                  {project.description2 && <div><br></br> <p className="project-description">{project.description2}</p></div>}
+                  
+                  {/* Links */}
+                  <div className="project-links">
+                  
+                    {project.demo && <a 
+                      href={project.demo}
+                      className="btn btn-demo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Demo Shorts  
+                         <img src={youtubeLogo} alt="Youtube Shorts" className="youtube-icon"></img>
+                    </a>}
+                    {project.link && <a
+                      href={project.link}
+                      className="btn btn-link"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                        Link
+                        <img src={link} alt="Link Icon" className="link-icon"></img>
+                    </a>}
+                  </div>
+                
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <p className="footer-text">© 2025 {profile.name}. All rights reserved.</p>
+          <p className="footer-subtext">Built from scartch by Louis using React and AWS</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+
+================================================
+FILE: src/index.css
+================================================
+/* =============== GLOBAL =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* =============== HEADER =============== */
+.header {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  color: white;
+  padding: 0rem 0;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  color: black;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.header-subtitle {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.header-contents {
+  font-size: 1rem;
+  color: black;
+  line-height: 1.6;
+}
+
+.header-contents h3 {
+  background-color: #dddddd;
+  padding: 0rem 0rem;
+  border-radius: 0.5rem;
+}
+.header-item-bigger{
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.header-item a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+/* =============== PROFILE SECTION =============== */
+.profile-section {
+  margin-top: 3rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-align: center;
+}
+
+.profile-banner {
+  background: linear-gradient(135deg, #0b066b, #740000);
+  height: 40px;
+}
+
+.profile-content {
+  padding: 2rem;
+  position: relative;
+  margin-top: -60px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* margin-top: 1rem; */
+  margin-bottom: 1.5rem;
+}
+
+.profile-bio {
+  color: #4b5563;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  max-width: 730px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold; /
+}
+
+/* =============== SOCIAL LINKS =============== */
+.school-logo {
+  width: 85px;       
+  height: 28px;
+  margin-left: 8px;  /* space between text and image */
+  vertical-align: middle; /* aligns with text */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0 rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.social-icon {
+  width:50px;
+  height: 50px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.youtube-icon {
+  margin-left: 5px;
+  width:20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.youtube-icon:hover {
+  transform: scale(1.1);
+}
+
+.link-icon {
+  margin-left: 5px;
+  width:20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.link-icon:hover {
+  transform: scale(1.1);
+}
+
+.btn-github {
+  background-color: #24292e;
+  color: white;
+}
+
+.btn-linkedin {
+  background-color: #ffffff;
+  color: white;
+}
+
+.btn-email {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* =============== PROJECTS SECTION =============== */
+.projects-section {
+  margin-top: 4rem; 
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+   align-items: center;
+}
+
+.project-card {
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  max-height: 500px;       /* Limit height */
+  overflow-y: auto; 
+  width: 128%;
+  
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+}
+
+.project-image-container {
+  flex: 1 1 45%;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px; /* optional: slightly rounded corners */
+}
+
+.project-details {
+  flex: 1 1 55%;
+  padding: 2rem;
+}
+
+.project-number {
+  font-weight: 600;
+  color: #6366f1;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+}
+
+.project-period {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #8a8c99;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: #1b1f24;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* =============== TECHNOLOGIES =============== */
+.technologies-section {
+  margin-top: 1rem;
+}
+
+.technologies-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.technologies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* =============== PROJECT LINKS =========*/
+
+.project-links {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;
+  gap: 0.5rem;               /* space between multiple links if added later */
+  margin-top: 1rem;
+}
+
+
+================================================
+FILE: src/main.jsx
+================================================
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+
+
+================================================
+FILE: src/assets/mil.JPG
+================================================
+[Binary file]
+

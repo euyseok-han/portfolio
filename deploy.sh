@@ -1,3 +1,5 @@
+```bash
+#!/bin/bash
 set -e
 
 ############################################
@@ -6,7 +8,6 @@ set -e
 
 REPO_URL="https://github.com/euyseok-han/portfolio.git"
 APP_NAME="portfolio"
-APP_PORT=3000
 DOMAIN="louis-han.info"
 WWW_DOMAIN="www.louis-han.info"
 
@@ -15,7 +16,6 @@ WWW_DOMAIN="www.louis-han.info"
 ############################################
 
 sudo apt update
-sudo apt upgrade -y
 
 ############################################
 # INSTALL REQUIRED PACKAGES
@@ -34,7 +34,7 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt install -y nodejs
 
 ############################################
-# CLONE REPO
+# CLONE OR UPDATE REPO
 ############################################
 
 cd /home/ubuntu
@@ -55,24 +55,55 @@ fi
 npm install
 
 ############################################
-# BUILD APP
+# BUILD VITE APP
 ############################################
 
-npm run build || true
+npm run build
 
 ############################################
-# CREATE SYSTEMD SERVICE
+# DEPLOY DIST FILES TO NGINX
 ############################################
 
-sudo tee /etc/systemd/system/${APP_NAME}.service > /dev/null <<EOF
-[Unit]
-Description=${APP_NAME} production service
-After=network.target
+sudo rm -rf /var/www/html/*
+sudo cp -r dist/* /var/www/html/
 
-[Service]
-Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu/${APP_NAME}
-ExecStart=/usr/bin/npm start
-Restart=always
+############################################
+# CONFIGURE NGINX
+############################################
+
+sudo tee /etc/nginx/sites-available/portfolio > /dev/null <<EOF
+server {
+    listen 80;
+    server_name ${DOMAIN} ${WWW_DOMAIN};
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files \$uri /index.html;
+    }
+}
+EOF
+
+############################################
+# ENABLE NGINX CONFIG
+############################################
+
+sudo rm -f /etc/nginx/sites-enabled/default
+
+sudo ln -sf \
+/etc/nginx/sites-available/portfolio \
+/etc/nginx/sites-enabled/portfolio
+
+############################################
+# TEST & RESTART NGINX
+############################################
+
+sudo nginx -t
+sudo systemctl restart nginx
+
 echo "======================================"
+echo "Deployment Complete!"
+echo "Website: http://${DOMAIN}"
+echo "======================================"
+```
