@@ -13,7 +13,7 @@ DEPLOY_DATE=$(date +%Y%m%d%H%M%S)
 TARGET_DIR="/var/www/portfolio_${DEPLOY_DATE}"
 
 ############################################
-# SYSTEM SETUP (one-time safe)
+# SYSTEM SETUP (safe for repeat runs)
 ############################################
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y git nginx curl certbot python3-certbot-nginx
@@ -30,6 +30,7 @@ fi
 cd /home/ubuntu
 
 if [ -d "$APP_NAME" ]; then
+    echo "Repo exists → pulling latest"
     cd $APP_NAME
     git fetch origin
     git reset --hard origin/main
@@ -55,18 +56,11 @@ sudo chown -R www-data:www-data "$TARGET_DIR"
 sudo ln -sfn "$TARGET_DIR" /var/www/html
 
 ############################################
-# NGINX CONFIG (HTTP → HTTPS ONLY HERE)
+# NGINX CONFIG (ONLY HTTP - NO 443 HERE)
 ############################################
 sudo tee /etc/nginx/sites-available/portfolio > /dev/null <<EOF
 server {
     listen 80;
-    server_name ${DOMAIN} ${WWW_DOMAIN};
-
-    return 301 https://\$host\$request_uri;
-}
-
-server {
-    listen 443 ssl;
     server_name ${DOMAIN} ${WWW_DOMAIN};
 
     root /var/www/html;
@@ -75,8 +69,6 @@ server {
     location / {
         try_files \$uri /index.html;
     }
-
-    # SSL will be injected by certbot
 }
 EOF
 
@@ -87,13 +79,13 @@ sudo rm -f /etc/nginx/sites-enabled/default || true
 sudo ln -sf /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
 
 ############################################
-# TEST NGINX (HTTP first)
+# START NGINX (HTTP ONLY FIRST)
 ############################################
 sudo nginx -t
 sudo systemctl restart nginx
 
 ############################################
-# SSL (NO REDIRECT FLAG → IMPORTANT)
+# SSL SETUP (CERTBOT HANDLES 443 AUTOMATICALLY)
 ############################################
 sudo certbot --nginx \
   -d ${DOMAIN} \
@@ -103,7 +95,7 @@ sudo certbot --nginx \
   -m admin@${DOMAIN}
 
 ############################################
-# FINAL RELOAD
+# FINAL CHECK
 ############################################
 sudo nginx -t
 sudo systemctl reload nginx
@@ -111,5 +103,5 @@ sudo systemctl reload nginx
 echo "======================================"
 echo "DEPLOY COMPLETE 🚀"
 echo "https://${DOMAIN}"
-echo "NO REDIRECT LOOP VERSION FIXED"
+echo "SSL handled by certbot (no manual 443 config)"
 echo "======================================"
