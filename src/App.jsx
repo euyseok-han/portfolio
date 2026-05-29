@@ -12,7 +12,7 @@ import waldo from './assets/waldo.gif';
 import mega from './assets/mega.png';
 import mil from './assets/mil.JPG';
 import garage from './assets/garage.jpg';
-import rcCar from './assets/rc_car.gif';
+import rcCar from './assets/rc_car.GIF';
 import hackathon from './assets/hackathon.png';
 
 import React from 'react';
