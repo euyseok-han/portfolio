@@ -1,3 +1,4 @@
+
 import linkedinLogo from './assets/LinkedIn_icon.png';
 import githubLogo from './assets/github.png';
 import mailLogo from './assets/mail_icon.png';
@@ -11,14 +12,14 @@ import waldo from './assets/waldo.gif';
 import mega from './assets/mega.png';
 import mil from './assets/mil.JPG';
 import garage from './assets/garage.jpg';
-import rcCar from './assets/rc_car.GIF';
+import rcCar from './assets/rc_car.gif';
 import hackathon from './assets/hackathon.png';
 
 import React from 'react';
 import './App.css';
 
 export default function App() {
-  // Your personal information
+
   const profile = {
     name: "Louis Han",
     image: "https://lh3.googleusercontent.com/a/ACg8ocJyvvY2sbqzKgED0A86paFCDNbZgciTBTminkMMNqEFPAqIS3Grq-GC_bN_1ulfME77qRqqej5-PkTw25DT5AvhoWIuYN4U=s576-c-no",
@@ -26,20 +27,29 @@ export default function App() {
     bio2: "✅ Leadership and teamwork skills honed as a Korean Air Force officer and VP of the UPenn Mechanical Engineering Graduate Association (MEGA)"
   };
 
-  // Projects (UPDATED ONLY CONTENT)
   const projects = [
     {
       id: 1,
       title: "Tiny Drone Research with Prof. Mark G. Allen",
       image: drone,
-      description:
-        "Designing and optimizing a ~25 g micro-drone in Penn’s Micro Sensors and Micro Actuators Group to target a 30-minute hover time using Python-based aluminum-air battery testing automation, performance characterization pipeline, and a SolidWorks chassis fabricated via 3D printing and laser cutting.",
+      description: (
+        <>
+          • Designing and optimizing ~25 g micro-drones targeting a 30-minute hover time using aluminum-air batteries
+          <br /><br />
+          • Developed Python-based battery testing automation and performance characterization pipeline
+          <br /><br />
+          • Conducting quality control and failure analysis to improve battery reliability and performance
+          <br /><br />
+          • Conducting research with Professor Mark Allen in the Electrical and Systems Engineering Department at UPenn
+        </>
+      ),
       technologies: [
         "Python",
         "Aerodynamics",
         "SolidWorks",
         "3D Printing",
-        "Laser Cutting",
+        "Quality Control",
+        "Battery Chemistry",
         "Battery Testing Automation"
       ],
       github: "",
@@ -47,13 +57,22 @@ export default function App() {
       link: "",
       github_link: "https://github.com/euyseok-han/AAB_Drone"
     },
-    
+
     {
       id: 2,
       title: "Patsol – AI Patent Search Engine",
       image: patsol,
-      description:
-        "Architected and implemented end-to-end RAG patent-search pipeline using Python, HuggingFace, Elasticsearch, enabling inventors to query patents via natural language instead of Boolean keyword filters",
+      description: (
+        <>
+          • Architected and implemented an end-to-end RAG patent-search pipeline
+          <br /><br />
+          • Enabled natural-language patent search using Python, HuggingFace, and Elasticsearch
+          <br /><br />
+          • Designed system to replace traditional Boolean keyword-based patent retrieval
+          <br /><br />
+          • Built full-stack infrastructure with React, FastAPI, AWS, and TDD workflow
+        </>
+      ),
       technologies: [
         "React",
         "FastAPI",
@@ -68,12 +87,22 @@ export default function App() {
       link: "https://patsol.kr/",
       github_link: ""
     },
+
     {
       id: 3,
       title: "Wharton Hack-AI-thon – AI Review Intelligence System",
       image: hackathon,
-      description:
-        "Built AI system that generates intelligent follow-up questions from hotel reviews (Expedia dataset) using machine learning and prompt engineering. Selected as a finalist (Top 6 teams) in Wharton Hack-AI-thon.",
+      description: (
+        <>
+          • Built an AI system that generates intelligent follow-up questions from hotel reviews
+          <br /><br />
+          • Applied machine learning and prompt engineering on the Expedia review dataset
+          <br /><br />
+          • Improved specificity and quality of user-generated review feedback
+          <br /><br />
+          • Selected as a finalist (Top 6 teams) in the Wharton Hack-AI-thon
+        </>
+      ),
       technologies: [
         "Python",
         "Machine Learning",
@@ -82,14 +111,23 @@ export default function App() {
       ],
       link: "http://18.221.7.70/",
       github_link: "https://github.com/WAIAI-Hack-AI-thon-2026/hack-ai-thon-submission-hb-presents/tree/aws-branch",
-
     },
+
     {
       id: 4,
       title: "Dual Motor RC Car with Web Dashboard",
       image: rcCar,
-      description:
-        "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
+      description: (
+        <>
+          • Built an ESP32-C3-based dual-motor RC car with quadrature encoders and PID speed control
+          <br /><br />
+          • Implemented wall-following and coordinate-based autonomous navigation
+          <br /><br />
+          • Developed a browser-based dashboard for manual/autonomous control, using JavaScript
+          <br /><br />
+          • Designed a custom SolidWorks chassis fabricated via laser cutting
+        </>
+      ),
       technologies: [
         "ESP32-C3",
         "Wi-Fi Communication",
@@ -104,18 +142,27 @@ export default function App() {
       demo: "",
       link: ""
     },
+
     {
       id: 5,
       title: "Waldo",
       image: waldo,
-      description:
-        "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
+      description: (
+        <>
+          • Designed and built a 2-DOF Waldo input device for motion replication
+          <br /><br />
+          • Mapped potentiometer input motion to servo motion using an ATmega32U microcontroller
+          <br /><br />
+          • Implemented register-level programming in C for low-level hardware control
+        </>
+      ),
       technologies: [
         "ATmega32U",
         "C (Register-Level Programming)",
         "Servo Motors",
         "SolidWorks",
-        "Rapid Prototyping"
+        "Rapid Prototyping",
+        "Sensors",
       ],
       github: "",
       demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
@@ -135,6 +182,7 @@ export default function App() {
       description2: "",
       link: "https://mega.seas.upenn.edu/mega-board/",
     },
+
     {
       id: 2,
       title: "Lab Instructor & Tool Library Staff @ UPenn Garage Lab",
@@ -145,6 +193,7 @@ export default function App() {
       description2: "",
       link: "https://meamlabs.seas.upenn.edu/garage-lab-and-tool-library/"
     },
+
     {
       id: 3,
       title: "Operations Officer, Captain @ The Korean Air Force",
@@ -164,21 +213,44 @@ export default function App() {
       {/* Header */}
       <header className="header">
         <div className="container">
+
           <div className="header-contents">
-            <p className="header-item-bigger">Mechanical Engineer | Software Developer</p>
+            <p className="header-item-bigger">
+              Mechanical Engineer | Software Developer
+            </p>
           </div>
+
           <h1 className="header-title">Louis Han</h1>
 
           <div className="header-contents">
-            <p className="header-item">📍 Philadelphia, PA, USA</p>
-            <p className="header-item">📧 <a href="mailto:louishan@seas.upenn.edu">louishan@seas.upenn.edu</a></p>
+
             <p className="header-item">
-              🎓 M.S.E. in Mechanical Engineering and Applied Mechanics, University of Pennsylvania
-              <img src={upennLogo} alt="UPenn Logo" className="school-logo" />
+              📍 Philadelphia, PA, USA
+            </p>
+
+            <p className="header-item">
+              📧
+              <a href="mailto:louishan@seas.upenn.edu">
+                louishan@seas.upenn.edu
+              </a>
+            </p>
+
+            <p className="header-item">
+              🎓 M.S.E. in Mechanical Engineering and Applied Mechanics,
+              University of Pennsylvania
+              <img
+                src={upennLogo}
+                alt="UPenn Logo"
+                className="school-logo"
+              />
             </p>
 
             <br />
-            <h3>Note: This portfolio website is optimized for desktop browsing</h3>
+
+            <h3>
+              Note: This portfolio website is optimized for desktop browsing
+            </h3>
+
           </div>
         </div>
       </header>
@@ -186,26 +258,58 @@ export default function App() {
       {/* Profile */}
       <section className="profile-section">
         <div className="container">
+
           <div className="profile-card">
+
             <div className="profile-banner"></div>
 
             <div className="profile-content">
-              <img src={profile.image} alt={profile.name} className="profile-image" />
+
+              <img
+                src={profile.image}
+                alt={profile.name}
+                className="profile-image"
+              />
+
               <h2 className="profile-name">{profile.name}</h2>
 
               <p className="profile-bio">{profile.bio1}</p>
               <p className="profile-bio">{profile.bio2}</p>
 
               <div className="social-links">
-                <a href="https://www.linkedin.com/in/uiseok-han-79a546229/" target="_blank" rel="noopener noreferrer">
-                  <img src={linkedinLogo} className="social-icon" alt="LinkedIn" />
+
+                <a
+                  href="https://www.linkedin.com/in/uiseok-han-79a546229/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={linkedinLogo}
+                    className="social-icon"
+                    alt="LinkedIn"
+                  />
                 </a>
-                <a href="https://github.com/euyseok-han/" target="_blank" rel="noopener noreferrer">
-                  <img src={githubLogo} className="social-icon" alt="GitHub" />
+
+                <a
+                  href="https://github.com/euyseok-han/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={githubLogo}
+                    className="social-icon"
+                    alt="GitHub"
+                  />
                 </a>
+
                 <a href="mailto:louishan@seas.upenn.edu">
-                  <img src={mailLogo} className="social-icon" alt="Email" />
+                  <img
+                    src={mailLogo}
+                    className="social-icon"
+                    alt="Email"
+                  />
                 </a>
+
               </div>
             </div>
           </div>
@@ -215,55 +319,94 @@ export default function App() {
       {/* Projects */}
       <section className="projects-section">
         <div className="container">
+
           <h3 className="section-title">Featured Projects</h3>
 
           <div className="projects-list">
+
             {projects.map((project, index) => (
               <div key={project.id} className="project-card">
 
                 <div className="project-image-container">
-                  <img src={project.image} alt={project.title} className="project-image" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-image"
+                  />
                 </div>
 
                 <div className="project-details">
+
                   <span className="project-number">
                     PROJECT {String(index + 1).padStart(2, '0')}
                   </span>
 
                   <h4 className="project-title">{project.title}</h4>
-                  <p className="project-description">{project.description}</p>
+
+                  <p className="project-description">
+                    {project.description}
+                  </p>
 
                   <div className="technologies-list">
+
                     {project.technologies.map((tech, idx) => (
-                      <span key={idx} className="tech-tag">{tech}</span>
+                      <span key={idx} className="tech-tag">
+                        {tech}
+                      </span>
                     ))}
+
                   </div>
 
                   <div className="project-links">
 
-  {project.demo && (
-    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-      <img src={youtubeLogo} alt="demo" className="link-icon" />
-    </a>
-  )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={youtubeLogo}
+                          alt="demo"
+                          className="link-icon"
+                        />
+                      </a>
+                    )}
 
-  {project.link && (
-    <a href={project.link} target="_blank" rel="noopener noreferrer">
-      <img src={link} alt="link" className="link-icon" />
-    </a>
-  )}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={link}
+                          alt="link"
+                          className="link-icon"
+                        />
+                      </a>
+                    )}
 
-  {project.github_link && (
-    <a href={project.github_link} target="_blank" rel="noopener noreferrer">
-      <img src={githubLogo} alt="github" className="link-icon" />
-    </a>
-  )}
+                    {project.github_link && (
+                      <a
+                        href={project.github_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={githubLogo}
+                          alt="github"
+                          className="link-icon"
+                        />
+                      </a>
+                    )}
 
-</div>
+                  </div>
 
                 </div>
               </div>
             ))}
+
           </div>
         </div>
       </section>
@@ -271,38 +414,64 @@ export default function App() {
       {/* Leadership */}
       <section className="projects-section">
         <div className="container">
-          <h3 className="section-title">Leadership Experiences</h3>
+
+          <h3 className="section-title">
+            Leadership Experiences
+          </h3>
 
           <div className="projects-list">
+
             {leaderships.map((item, index) => (
               <div key={item.id} className="project-card">
 
                 <div className="project-image-container">
-                  <img src={item.image} alt={item.title} className="project-image" />
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="project-image"
+                  />
                 </div>
 
                 <div className="project-details">
+
                   <span className="project-number">
                     Leadership {String(index + 1).padStart(2, '0')}
                   </span>
 
                   <h4 className="project-title">{item.title}</h4>
+
                   <p className="project-period">{item.period}</p>
-                  <p className="project-description">{item.description}</p>
+
+                  <p className="project-description">
+                    {item.description}
+                  </p>
 
                   {item.description2 && (
-                    <p className="project-description">{item.description2}</p>
+                    <p className="project-description">
+                      {item.description2}
+                    </p>
                   )}
 
                   {item.link && (
-                    <a href={item.link} target="_blank" rel="noopener noreferrer">
-                      Link<img src={link} alt="link" className="link-icon" />
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Link
+                      <img
+                        src={link}
+                        alt="link"
+                        className="link-icon"
+                      />
                     </a>
                   )}
+
                 </div>
 
               </div>
             ))}
+
           </div>
         </div>
       </section>
@@ -318,3 +487,4 @@ export default function App() {
     </div>
   );
 }
+
