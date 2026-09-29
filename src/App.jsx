@@ -6,12 +6,13 @@ import youtubeLogo from './assets/youtube_icon.png';
 import patsol from './assets/patsol.png';
 import link from './assets/link.png';
 import drone from './assets/drone.jpg';
-import waldo from './assets/waldo.gif';
+import hackathon1 from './assets/hackathon1.jpg';
+import hackathon2 from './assets/hackathon2.png';
+import hackathon3 from './assets/hackathon3.jpg';
 import mega from './assets/mega.png';
 import mil from './assets/mil.JPG';
 import garage from './assets/garage.jpg';
 import rcCar from './assets/rc_car.GIF';
-// 원본 코드에서 apec이 import 없이 사용되고 있었습니다. 실제 파일명에 맞게 수정하세요.
 import apec1 from './assets/apec1.jpg';
 import apec2 from './assets/apec2.JPG';
 import apec3 from './assets/apec3.JPG';
@@ -36,14 +37,11 @@ const profile = {
   image:
     "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no",
   bio: [
-"Mechanical engineer with expertise in mechatronics, manufacturing, and robotics, with research experience in aluminum-air battery under Prof. Mark G. Allen.",
-
-"Two years of professional backend development experience, complemented by hands-on experience with Python, C++, ROS 2, and embedded systems.",
-
-"Strong ability to understand and analyze complex technologies and projects, developed through experience as a KIPO Patent Examiner evaluating diverse technologies and intellectual property.",
-
-"Leadership and teamwork skills developed as a Korean Air Force officer and Vice President of the UPenn Mechanical Engineering Graduate Association (MEGA).",
-],
+    "Mechanical engineer with expertise in mechatronics, manufacturing, and robotics, with research experience in aluminum-air battery under Prof. Mark G. Allen.",
+    "Two years of professional backend development experience, complemented by hands-on experience with Python, C++, ROS 2, and embedded systems.",
+    "Strong ability to understand and analyze complex technologies and projects, developed through experience as a KIPO Patent Examiner evaluating diverse technologies and intellectual property.",
+    "Leadership and teamwork skills developed as a Korean Air Force officer and Vice President of the UPenn Mechanical Engineering Graduate Association (MEGA).",
+  ],
   location: "Philadelphia, PA, USA",
   email: "louishan@seas.upenn.edu",
   education:
@@ -53,39 +51,40 @@ const profile = {
 };
 
 const projects = [
-  
-
   {
-  id: 2,
-  title: "Autonomous RC Car with ROS 2 and LiDAR",
-  images: [roboracer1, roboracer2],
-  description:
-    "Developing a ROS 2-based autonomous RC car using Python and LiDAR for real-time perception and navigation, implementing wall following, obstacle avoidance, and reactive steering algorithms.",
-  technologies: [
-    "ROS 2",
-    "Python",
-    "LiDAR",
-    "LaserScan",
-    "Autonomous Navigation",
-    "Wall Following",
-    "Obstacle Avoidance",
-    "Ackermann Steering",
-  ],
-  github_link: "",
-  demo: "https://www.youtube.com/shorts/vV8adN95J0Y",
-},
+    id: 2,
+    title: "Autonomous RC Car with ROS 2 and LiDAR",
+    images: [roboracer1, roboracer2],
+    description:
+      "Developing a ROS 2-based autonomous RC car using Python and LiDAR for real-time perception and navigation, implementing wall following, obstacle avoidance, and reactive steering algorithms.",
+    technologies: [
+      "ROS 2",
+      "Python",
+      "LiDAR",
+      "LaserScan",
+      "Autonomous Navigation",
+      "Wall Following",
+      "Obstacle Avoidance",
+      "Ackermann Steering",
+    ],
+    demo: "https://www.youtube.com/shorts/vV8adN95J0Y",
+  },
   {
     id: 3,
-    title: "Dual Motor RC Car with Web Dashboard",
+    title: "Autonomous Robot with ToF and IR Position Sensing",
     images: [rcCar],
     description:
-      "Built an ESP32-C3-based dual-motor RC car with quadrature encoders, PID speed control, and a real-time browser dashboard for telemetry, mounted on a SolidWorks-designed chassis fabricated via laser cutting.",
+      "Built an ESP32-C3-based dual-motor autonomous robot that uses a ToF distance sensor and an IR sensor providing XY coordinates to press buttons and navigate to target coordinates around obstacles, using coordinate-map-based motion planning. Includes quadrature-encoder PID speed control and a real-time browser dashboard for telemetry, on a SolidWorks-designed, laser-cut chassis.",
     technologies: [
       "ESP32-C3",
-      "Wi-Fi Communication",
-      "C++ / Arduino Framework",
+      "ToF Sensor",
+      "IR Position Sensing (XY)",
+      "Motion Planning",
+      "Obstacle Avoidance",
       "Quadrature Encoders",
       "PID Control",
+      "C++ / Arduino Framework",
+      "Wi-Fi Communication",
       "SolidWorks",
       "Laser Cutting",
       "HTML/CSS/JavaScript",
@@ -99,23 +98,22 @@ const projects = [
     images: [drone],
     description:
       "Perform Python-based mass/power modeling, motor–propeller optimization, and SolidWorks chassis design with 3D-printed fabrication for developing compact, high-efficiency surveillance drones.",
-    technologies: ["Python", "Aerodynamics", "SolidWorks", "3D Printing", "Laser Cutting",],
-    github_link: "",
+    technologies: ["Python", "Aerodynamics", "SolidWorks", "3D Printing", "Laser Cutting"],
   },
   {
     id: 4,
-    title: "Waldo",
-    images: [waldo],
+    badge: "Wharton Hack-AI-thon Finalist",
+    title: "AI Review Assistant for Expedia",
+    images: [hackathon1,hackathon2,hackathon3],
     description:
-      "Designed and built a 2-DOF Waldo input device that maps input motion to servo motion using potentiometers and an ATmega32U microcontroller programmed in C with register-level control, with structure modeled in SolidWorks and laser-cut.",
+      "Selected as a finalist at the Wharton Hack-AI-thon for a prompt-engineered assistant that guides Expedia guests while they write hotel reviews. Instead of leaving travelers alone with a blank text box, it asks the specific questions that matter most, chosen from statistics and review data, so each review carries the details future guests actually need.",
     technologies: [
-      "ATmega32U",
-      "C (Register-Level Programming)",
-      "Servo Motors",
-      "SolidWorks",
-      "Rapid Prototyping",
+      "Prompt Engineering",
+      "Generative AI",
+      "LLM",
+      "Statistical Analysis",
+      "Data-Driven Question Design",
     ],
-    demo: "https://www.youtube.com/shorts/5qD2xaDjFkE",
   },
   {
     id: 5,
@@ -274,6 +272,7 @@ function Entry({ item }) {
       <ImageCarousel images={item.images} alt={item.title} fit={item.fit} />
 
       <div className="entry-body">
+        {item.badge && <p className="entry-badge">{item.badge}</p>}
         <h3 className="entry-title">{item.title}</h3>
         {item.period && <p className="entry-period">{item.period}</p>}
 
