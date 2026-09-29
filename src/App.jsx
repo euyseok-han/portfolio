@@ -1,4 +1,3 @@
-
 import linkedinLogo from './assets/LinkedIn_icon.png';
 import githubLogo from './assets/github.png';
 import mailLogo from './assets/mail_icon.png';
@@ -13,9 +12,9 @@ import mil from './assets/mil.JPG';
 import garage from './assets/garage.jpg';
 import rcCar from './assets/rc_car.GIF';
 // 원본 코드에서 apec이 import 없이 사용되고 있었습니다. 실제 파일명에 맞게 수정하세요.
-import apec1 from './assets/apec1.png';
-import apec2 from './assets/apec2.png';
-import apec3 from './assets/apec3.png';
+import apec1 from './assets/apec1.jpg';
+import apec2 from './assets/apec2.JPG';
+import apec3 from './assets/apec3.JPG';
 import roboracer1 from './assets/ROBORACER1.gif';
 import roboracer2 from './assets/ROBORACER2.gif';
 // src/assets/ 폴더에 이력서 PDF를 이 이름으로 넣어주세요.
@@ -392,7 +391,6 @@ export default function App() {
                 <a href={`mailto:${profile.email}`} className="social-btn" aria-label="Email">
                   <img src={mailLogo} alt="" className="social-icon" />
                 </a>
-
               </div>
             </div>
           </div>
@@ -438,7 +436,6 @@ export default function App() {
           <p>Built from scratch with React and AWS.</p>
         </div>
       </footer>
-
     </div>
   );
 }
