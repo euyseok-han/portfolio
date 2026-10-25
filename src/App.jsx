@@ -50,9 +50,8 @@ const profile = {
   image:
     "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no",
   bio: [
-    "Software engineer with 2 years of professional Python backend experience at Yogiyo, building services for 500K+ users and data pipelines processing 1M+ orders per day.",
-    "Built AI-powered patent search and retrieval workflows at Patsol, combining natural-language interfaces, RAG, and Elasticsearch.",
-    "Currently pursuing an M.S.E. in Mechanical Engineering (Robotics) at Penn, with hands-on experience in autonomous navigation, embedded control, and drone power-system integration.",
+    "Former Software engineer with 2 years of professional Python backend experience at Yogiyo, building services for 500K+ users and data pipelines processing 1M+ orders per day.",
+    "Currently pursuing an M.S.E. in Mechanical Engineering (Robotics) at Penn. Since October 2025, I have conducted research under Prof. Mark G. Allen on next-generation aluminum-air battery (AAB) systems as lightweight energy sources for drones, alongside hands-on work in autonomous navigation and embedded control.",
     "Former KIPO patent examiner and Republic of Korea Air Force captain, bringing strong technical writing, analytical reasoning, ownership, and team leadership.",
   ],
   location: "Philadelphia, PA, USA",
@@ -64,6 +63,51 @@ const profile = {
 };
 
 const projects = [
+  {
+    id: 2,
+    badge: "2nd Place · 20 Teams",
+    title: "RoboRacer — Autonomous Racing with ROS 2",
+    category: "Robotics · Planning & Control",
+    images: [roboracer1, roboracer2],
+    description:
+      "Developed an autonomous racing system using ROS 2, Python, C++, and LiDAR, placing second among 20 teams in a Penn student racing competition. Implemented and evaluated path-planning and control methods including A*, RRT, RRT*, MPC, and PID. Integrated perception, navigation, obstacle avoidance, and vehicle control to improve real-time autonomous driving performance.",
+    technologies: [
+      "ROS 2",
+      "Python",
+      "C++",
+      "LiDAR",
+      "A*",
+      "RRT / RRT*",
+      "Model Predictive Control",
+      "PID Control",
+      "Autonomous Navigation",
+    ],
+    demo: "https://www.youtube.com/shorts/vV8adN95J0Y",
+    //journalProjectId: "roboracer",
+  },
+  {
+    id: 3,
+    title: "Embedded Autonomous Robot",
+    category: "Embedded Systems · Motion Control",
+    images: [rcCar],
+    description:
+      "Built an ESP32-C3-based dual-motor robot that navigates to target coordinates using ToF distance sensing and IR-based XY position feedback. Implemented coordinate-based motion planning, obstacle avoidance, and quadrature-encoder PID speed control. Designed a custom chassis in SolidWorks, fabricated it using laser cutting, and built a browser-based dashboard for real-time telemetry over Wi-Fi.",
+    technologies: [
+      "C++",
+      "ESP32-C3",
+      "Sensor Integration",
+      "Motion Planning",
+      "Obstacle Avoidance",
+      "Quadrature Encoders",
+      "PID Control",
+      "Wi-Fi",
+      "JavaScript",
+      "SolidWorks",
+      "Laser Cutting",
+    ],
+    github_link: "https://github.com/euyseok-han/MEAM5100",
+    demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
+  },
   {
     id: 6,
     title: "Yogiyo — Restaurant Self-Service Platform",
@@ -107,52 +151,12 @@ const projects = [
     link: "https://patsol.kr/",
   },
   {
-    id: 4,
-    badge: "Wharton Hack-AI-thon Finalist",
-    title: "AI Review Assistant for Expedia",
-    category: "Generative AI · Full-Stack Development",
-    images: [hackathon1, hackathon2, hackathon3],
-    description:
-      "Built an AI-powered assistant that helps travelers write more useful hotel reviews. Designed a prompt-driven workflow that asks targeted questions informed by review statistics and existing review data, helping users capture details that matter to future guests. Developed a web application with FastAPI and React to deliver the interactive experience. Selected as a finalist at the Wharton Hack-AI-thon.",
-    technologies: [
-      "Generative AI",
-      "Prompt Engineering",
-      "Python",
-      "FastAPI",
-      "React",
-      "Data Analysis",
-      "Full-Stack Development",
-    ],
-  },
-  {
-    id: 2,
-    badge: "2nd Place · 20 Teams",
-    title: "RoboRacer — Autonomous Racing with ROS 2",
-    category: "Robotics · Planning & Control",
-    images: [roboracer1, roboracer2],
-    description:
-      "Developed an autonomous racing system using ROS 2, Python, C++, and LiDAR, placing second among 20 teams in a Penn student racing competition. Implemented and evaluated path-planning and control methods including A*, RRT, RRT*, MPC, and PID. Integrated perception, navigation, obstacle avoidance, and vehicle control to improve real-time autonomous driving performance.",
-    technologies: [
-      "ROS 2",
-      "Python",
-      "C++",
-      "LiDAR",
-      "A*",
-      "RRT / RRT*",
-      "Model Predictive Control",
-      "PID Control",
-      "Autonomous Navigation",
-    ],
-    demo: "https://www.youtube.com/shorts/vV8adN95J0Y",
-    //journalProjectId: "roboracer",
-  },
-  {
     id: 1,
     title: "Tiny Drone & Aluminum-Air Battery Research",
     category: "Robotics · Power Systems Integration",
     images: [drone],
     description:
-      "Conducting research with Prof. Mark G. Allen on aluminum-air (AAB) battery systems for lightweight, energy-efficient drones. Experimentally evaluated battery dimensions, cell configurations, and current–voltage characteristics to optimize power output and system mass. Performed bench testing to evaluate 3D-printed propeller designs and inform motor selection. Integrated the AAB power source, flight controller, and custom-designed chassis into a compact drone platform, addressing system-level trade-offs in weight, power, and integration.",
+      "Since October 2025, conducting research with Prof. Mark G. Allen on next-generation aluminum-air battery (AAB) systems as lightweight energy sources for drones. Evaluating battery dimensions, cell configurations, and current-voltage characteristics to understand power-output and mass trade-offs. Using a compact drone platform to assess how the AAB energy source integrates with the flight controller, motor-propeller system, and custom chassis, including bench testing of 3D-printed propeller designs.",
     technologies: [
       "System Modeling",
       "Power & Mass Budgeting",
@@ -164,31 +168,29 @@ const projects = [
     ],
     //journalProjectId: "tiny-drone",
   },
-  {
-    id: 3,
-    title: "Embedded Autonomous Robot",
-    category: "Embedded Systems · Motion Control",
-    images: [rcCar],
-    description:
-      "Built an ESP32-C3-based dual-motor robot that navigates to target coordinates using ToF distance sensing and IR-based XY position feedback. Implemented coordinate-based motion planning, obstacle avoidance, and quadrature-encoder PID speed control. Designed a custom chassis in SolidWorks, fabricated it using laser cutting, and built a browser-based dashboard for real-time telemetry over Wi-Fi.",
-    technologies: [
-      "C++",
-      "ESP32-C3",
-      "Sensor Integration",
-      "Motion Planning",
-      "Obstacle Avoidance",
-      "Quadrature Encoders",
-      "PID Control",
-      "Wi-Fi",
-      "JavaScript",
-      "SolidWorks",
-      "Laser Cutting",
-    ],
-    github_link: "https://github.com/euyseok-han/MEAM5100",
-    demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
-  },
+  
 ];
 
+const awards = [
+  {
+    id: 1,
+    badge: "Wharton Hack-AI-thon Finalist",
+    title: "AI Review Assistant for Expedia",
+    category: "Generative AI · Full-Stack Development",
+    images: [hackathon1, hackathon2, hackathon3],
+    description:
+      "Selected as a finalist at the Wharton Hack-AI-thon for building an AI-powered assistant that helps travelers write more useful hotel reviews. The application used a prompt-driven workflow, FastAPI, and React to guide users through targeted review questions.",
+    technologies: [
+      "Generative AI",
+      "Prompt Engineering",
+      "Python",
+      "FastAPI",
+      "React",
+      "Data Analysis",
+      "Full-Stack Development",
+    ],
+  },
+];
 
 const leaderships = [
   {
@@ -199,7 +201,7 @@ const leaderships = [
     fit: "contain",
     description:
       "Organizing events and workshops for over 300 mechanical engineering graduate students, fostering a strong sense of community and professional development within the department.",
-    link: "https://mega.seas.upenn.edu/mega-board/",
+    link: "https://mega.seas.upenn.edu/former-mega-boards/",
   },
   {
     id: 2,
@@ -453,6 +455,7 @@ function PortfolioHome() {
           </a>
           <div className="nav-links">
             <a href="#projects" className="nav-link">Projects</a>
+            <a href="#awards" className="nav-link">Awards</a>
             <a href="#leadership" className="nav-link">Leadership</a>
             <a href={resumePdf} download="Louis_Han_Resume.pdf" className="btn btn-primary btn-small">
               Resume
@@ -538,6 +541,18 @@ function PortfolioHome() {
             <div className="entries">
               {projects.map((p) => (
                 <Entry key={p.id} item={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Awards & Honors */}
+        <section className="section" id="awards">
+          <div className="container">
+            <h2 className="section-title">Awards &amp; Honors</h2>
+            <div className="entries">
+              {awards.map((award) => (
+                <Entry key={award.id} item={award} />
               ))}
             </div>
           </div>
