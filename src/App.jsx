@@ -19,10 +19,22 @@ import apec3 from './assets/apec3.JPG';
 import roboracer1 from './assets/ROBORACER1.gif';
 import roboracer2 from './assets/ROBORACER2.gif';
 // src/assets/ 폴더에 이력서 PDF를 이 이름으로 넣어주세요.
-import resumePdf from './assets/LouisHan_Resume.pdf';
-
+import resumePdf from './assets/Louis_Resume.pdf';
+import yogiyo1 from './assets/yogiyo.png';
+import yogiyo2 from './assets/franchise.png';
 import React, { useState } from 'react';
 import './App.css';
+
+
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
+import ProjectDetail from "./ProjectDetail";
+
 
 /* ------------------------------------------------------------------ */
 /* Data                                                                */
@@ -31,16 +43,17 @@ import './App.css';
 /* fit: "cover"(꽉 채움, 기본값) | "contain"(잘리지 않게, 스크린샷용)    */
 /* ------------------------------------------------------------------ */
 
+
 const profile = {
   name: "Louis Han",
-  role: "Mechanical Engineer & Software Developer",
+  role: "Software Engineer | Backend, AI & Robotics",
   image:
     "https://lh3.googleusercontent.com/a/ACg8ocKC6DcW9Or-7rpK7CGDMP1YZYTEL8ojaYE64oFxRASKyVp0Vpo=s288-c-no",
   bio: [
-    "Mechanical engineer with expertise in mechatronics, manufacturing, and robotics, with research experience in aluminum-air battery under Prof. Mark G. Allen.",
-    "Two years of professional backend development experience, complemented by hands-on experience with Python, C++, ROS 2, and embedded systems.",
-    "Strong ability to understand and analyze complex technologies and projects, developed through experience as a KIPO Patent Examiner evaluating diverse technologies and intellectual property.",
-    "Leadership and teamwork skills developed as a Korean Air Force officer and Vice President of the UPenn Mechanical Engineering Graduate Association (MEGA).",
+    "Software engineer with 2 years of professional Python backend experience at Yogiyo, building services for 500K+ users and data pipelines processing 1M+ orders per day.",
+    "Built AI-powered patent search and retrieval workflows at Patsol, combining natural-language interfaces, RAG, and Elasticsearch.",
+    "Currently pursuing an M.S.E. in Mechanical Engineering (Robotics) at Penn, with hands-on experience in autonomous navigation, embedded control, and drone power-system integration.",
+    "Former KIPO patent examiner and Republic of Korea Air Force captain, bringing strong technical writing, analytical reasoning, ownership, and team leadership.",
   ],
   location: "Philadelphia, PA, USA",
   email: "louishan@seas.upenn.edu",
@@ -52,88 +65,130 @@ const profile = {
 
 const projects = [
   {
-    id: 2,
-    title: "Autonomous RC Car with ROS 2 and LiDAR",
-    images: [roboracer1, roboracer2],
+    id: 6,
+    title: "Yogiyo — Restaurant Self-Service Platform",
+    category: "Backend Engineering · Production Systems",
+    images: [yogiyo1, yogiyo2],
     description:
-      "Developing a ROS 2-based autonomous RC car using Python and LiDAR for real-time perception and navigation, implementing wall following, obstacle avoidance, and reactive steering algorithms.",
+      "Built backend services for Yogiyo, one of South Korea's leading food delivery platforms, enabling restaurant owners to independently manage onboarding, menus, business hours, and other operational workflows. Developed APIs and automated workflows using Python, Django REST Framework, FastAPI, and React, supporting approximately 500K users. Worked toward low-latency, high-reliability service during peak traffic, participated in on-call rotations, and resolved production bugs. Also contributed to data engineering pipelines processing 1M+ orders per day to power restaurant sales insights. Selected to deliver a technical talk to prospective engineers at a Yogiyo career fair.",
     technologies: [
-      "ROS 2",
       "Python",
-      "LiDAR",
-      "LaserScan",
-      "Autonomous Navigation",
-      "Wall Following",
-      "Obstacle Avoidance",
-      "Ackermann Steering",
+      "Django REST Framework",
+      "FastAPI",
+      "React",
+      "JavaScript",
+      "Backend APIs",
+      "Data Engineering",
+      "Production Support",
+      "On-Call",
+      "SQL",
+      "shell scripting",
     ],
-    demo: "https://www.youtube.com/shorts/vV8adN95J0Y",
+    ///link: "https://ceo.yogiyo.co.kr/",
   },
   {
-    id: 3,
-    title: "Autonomous Robot with ToF and IR Position Sensing",
-    images: [rcCar],
+    id: 5,
+    title: "Patsol — AI-Powered Patent Intelligence",
+    category: "AI Engineering · Search & Retrieval",
+    images: [patsol],
+    fit: "contain",
     description:
-      "Built an ESP32-C3-based dual-motor autonomous robot that uses a ToF distance sensor and an IR sensor providing XY coordinates to press buttons and navigate to target coordinates around obstacles, using coordinate-map-based motion planning. Includes quadrature-encoder PID speed control and a real-time browser dashboard for telemetry, on a SolidWorks-designed, laser-cut chassis.",
+      "Joined Patsol as an early team member to develop AI-powered tools for patent professionals. Built natural-language patent search workflows, prior-art discovery, infringement-analysis capabilities, and AI-assisted patent claim drafting. Integrated Elasticsearch-based keyword search to refine natural-language results, combining semantic discovery with targeted retrieval. Contributed to end-to-end application development spanning the React frontend, FastAPI backend, and retrieval pipeline.",
     technologies: [
-      "ESP32-C3",
-      "ToF Sensor",
-      "IR Position Sensing (XY)",
-      "Motion Planning",
-      "Obstacle Avoidance",
-      "Quadrature Encoders",
-      "PID Control",
-      "C++ / Arduino Framework",
-      "Wi-Fi Communication",
-      "SolidWorks",
-      "Laser Cutting",
-      "HTML/CSS/JavaScript",
+      "Python",
+      "FastAPI",
+      "React",
+      "Elasticsearch",
+      "RAG",
+      "Hugging Face",
+      "AWS",
+      "Test-Driven Development",
     ],
-    github_link: "https://github.com/euyseok-han/MEAM5100",
-    demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
-  },
-  {
-    id: 1,
-    title: "Tiny Drone Research with Prof. Mark G. Allen",
-    images: [drone],
-    description:
-      "Perform Python-based mass/power modeling, motor–propeller optimization, and SolidWorks chassis design with 3D-printed fabrication for developing compact, high-efficiency surveillance drones.",
-    technologies: ["Python", "Aerodynamics", "SolidWorks", "3D Printing", "Laser Cutting"],
+    link: "https://patsol.kr/",
   },
   {
     id: 4,
     badge: "Wharton Hack-AI-thon Finalist",
     title: "AI Review Assistant for Expedia",
-    images: [hackathon1,hackathon2,hackathon3],
+    category: "Generative AI · Full-Stack Development",
+    images: [hackathon1, hackathon2, hackathon3],
     description:
-      "Selected as a finalist at the Wharton Hack-AI-thon for a prompt-engineered assistant that guides Expedia guests while they write hotel reviews. Instead of leaving travelers alone with a blank text box, it asks the specific questions that matter most, chosen from statistics and review data, so each review carries the details future guests actually need.",
+      "Built an AI-powered assistant that helps travelers write more useful hotel reviews. Designed a prompt-driven workflow that asks targeted questions informed by review statistics and existing review data, helping users capture details that matter to future guests. Developed a web application with FastAPI and React to deliver the interactive experience. Selected as a finalist at the Wharton Hack-AI-thon.",
     technologies: [
-      "Prompt Engineering",
       "Generative AI",
-      "LLM",
-      "Statistical Analysis",
-      "Data-Driven Question Design",
+      "Prompt Engineering",
+      "Python",
+      "FastAPI",
+      "React",
+      "Data Analysis",
+      "Full-Stack Development",
     ],
   },
   {
-    id: 5,
-    title: "Patsol – AI Patent Search Engine",
-    images: [patsol],
-    fit: "contain",
+    id: 2,
+    badge: "2nd Place · 20 Teams",
+    title: "RoboRacer — Autonomous Racing with ROS 2",
+    category: "Robotics · Planning & Control",
+    images: [roboracer1, roboracer2],
     description:
-      "Architected and implemented an end-to-end RAG patent-search pipeline using Python, HuggingFace, and Elasticsearch, enabling inventors to query patents in natural language instead of Boolean keyword filters.",
+      "Developed an autonomous racing system using ROS 2, Python, C++, and LiDAR, placing second among 20 teams in a Penn student racing competition. Implemented and evaluated path-planning and control methods including A*, RRT, RRT*, MPC, and PID. Integrated perception, navigation, obstacle avoidance, and vehicle control to improve real-time autonomous driving performance.",
     technologies: [
-      "React",
-      "FastAPI",
-      "Elasticsearch",
-      "RAG (Retrieval-Augmented Generation)",
-      "AWS",
-      "Git",
-      "Test-Driven Development (TDD)",
+      "ROS 2",
+      "Python",
+      "C++",
+      "LiDAR",
+      "A*",
+      "RRT / RRT*",
+      "Model Predictive Control",
+      "PID Control",
+      "Autonomous Navigation",
     ],
-    link: "https://patsol.kr/",
+    demo: "https://www.youtube.com/shorts/vV8adN95J0Y",
+    //journalProjectId: "roboracer",
+  },
+  {
+    id: 1,
+    title: "Tiny Drone & Aluminum-Air Battery Research",
+    category: "Robotics · Power Systems Integration",
+    images: [drone],
+    description:
+      "Conducting research with Prof. Mark G. Allen on aluminum-air (AAB) battery systems for lightweight, energy-efficient drones. Experimentally evaluated battery dimensions, cell configurations, and current–voltage characteristics to optimize power output and system mass. Performed bench testing to evaluate 3D-printed propeller designs and inform motor selection. Integrated the AAB power source, flight controller, and custom-designed chassis into a compact drone platform, addressing system-level trade-offs in weight, power, and integration.",
+    technologies: [
+      "System Modeling",
+      "Power & Mass Budgeting",
+      "Battery Systems",
+      "Motor-Propeller Optimization",
+      "SolidWorks",
+      "3D Printing",
+      "PID Control",
+    ],
+    //journalProjectId: "tiny-drone",
+  },
+  {
+    id: 3,
+    title: "Embedded Autonomous Robot",
+    category: "Embedded Systems · Motion Control",
+    images: [rcCar],
+    description:
+      "Built an ESP32-C3-based dual-motor robot that navigates to target coordinates using ToF distance sensing and IR-based XY position feedback. Implemented coordinate-based motion planning, obstacle avoidance, and quadrature-encoder PID speed control. Designed a custom chassis in SolidWorks, fabricated it using laser cutting, and built a browser-based dashboard for real-time telemetry over Wi-Fi.",
+    technologies: [
+      "C++",
+      "ESP32-C3",
+      "Sensor Integration",
+      "Motion Planning",
+      "Obstacle Avoidance",
+      "Quadrature Encoders",
+      "PID Control",
+      "Wi-Fi",
+      "JavaScript",
+      "SolidWorks",
+      "Laser Cutting",
+    ],
+    github_link: "https://github.com/euyseok-han/MEAM5100",
+    demo: "https://youtu.be/2a1YbDmjhKQ?feature=shared",
   },
 ];
+
 
 const leaderships = [
   {
@@ -195,7 +250,7 @@ function Chevron({ direction }) {
   );
 }
 
-function ImageCarousel({ images, alt, fit = "cover" }) {
+function ImageCarousel({ images, alt, fit = "cover", journalPath }) {
   const [index, setIndex] = useState(0);
   const count = images.length;
   const multiple = count > 1;
@@ -220,7 +275,13 @@ function ImageCarousel({ images, alt, fit = "cover" }) {
       <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
         {images.map((src, i) => (
           <div className="carousel-slide" key={i} aria-hidden={i !== index}>
-            <img src={src} alt={`${alt} – photo ${i + 1} of ${count}`} loading="lazy" />
+            {journalPath ? (
+              <Link to={journalPath} className="carousel-case-study-link" tabIndex={i === index ? 0 : -1}>
+                <img src={src} alt={`${alt} – photo ${i + 1} of ${count}`} loading="lazy" />
+              </Link>
+            ) : (
+              <img src={src} alt={`${alt} – photo ${i + 1} of ${count}`} loading="lazy" />
+            )}
           </div>
         ))}
       </div>
@@ -267,17 +328,48 @@ function ImageCarousel({ images, alt, fit = "cover" }) {
 }
 
 function Entry({ item }) {
+  const journalPath = item.journalProjectId
+    ? `/projects/${item.journalProjectId}/week-1`
+    : null;
+
   return (
     <article className="entry">
-      <ImageCarousel images={item.images} alt={item.title} fit={item.fit} />
+      {item.images?.length > 0 ? (
+        <ImageCarousel
+          images={item.images}
+          alt={item.title}
+          fit={item.fit}
+          journalPath={journalPath}
+        />
+      ) : (
+        <div className="entry-visual-placeholder">
+          <span>{item.category || "Software Engineering"}</span>
+          <strong>{item.title}</strong>
+        </div>
+      )}
 
       <div className="entry-body">
-        {item.badge && <p className="entry-badge">{item.badge}</p>}
-        <h3 className="entry-title">{item.title}</h3>
-        {item.period && <p className="entry-period">{item.period}</p>}
+        {item.badge && (
+          <p className="entry-badge">{item.badge}</p>
+        )}
+
+        <h3 className="entry-title">
+          {journalPath ? <Link to={journalPath}>{item.title}</Link> : item.title}
+        </h3>
+
+        {item.category && (
+          <p className="entry-category">{item.category}</p>
+        )}
+
+        {item.period && (
+          <p className="entry-period">{item.period}</p>
+        )}
 
         <p className="entry-text">{item.description}</p>
-        {item.description2 && <p className="entry-text">{item.description2}</p>}
+
+        {item.description2 && (
+          <p className="entry-text">{item.description2}</p>
+        )}
 
         {item.technologies && (
           <ul className="tags" aria-label="Technologies used">
@@ -290,20 +382,43 @@ function Entry({ item }) {
         )}
 
         <div className="entry-links">
+          {journalPath && (
+            <Link className="btn btn-primary" to={journalPath}>
+              Read case study <span aria-hidden="true">→</span>
+            </Link>
+          )}
+
           {item.demo && (
-            <a className="btn btn-outline" href={item.demo} target="_blank" rel="noopener noreferrer">
+            <a
+              className="btn btn-outline"
+              href={item.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={youtubeLogo} alt="" className="btn-icon" />
               Watch demo
             </a>
           )}
+
           {item.github_link && (
-            <a className="btn btn-outline" href={item.github_link} target="_blank" rel="noopener noreferrer">
+            <a
+              className="btn btn-outline"
+              href={item.github_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={githubLogo} alt="" className="btn-icon" />
               View code
             </a>
           )}
+
           {item.link && (
-            <a className="btn btn-outline" href={item.link} target="_blank" rel="noopener noreferrer">
+            <a
+              className="btn btn-outline"
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={link} alt="" className="btn-icon" />
               Visit site
             </a>
@@ -314,7 +429,20 @@ function Entry({ item }) {
   );
 }
 
+
 export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PortfolioHome />} />
+        <Route path="/projects/:projectId/:weekSlug" element={<ProjectDetail />} />
+        <Route path="*" element={<PortfolioHome />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+function PortfolioHome() {
   return (
     <div className="app">
       {/* Navigation */}
